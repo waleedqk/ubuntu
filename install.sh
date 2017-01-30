@@ -3,3 +3,4 @@ tar xzvf FoxitReader*.tar.gz
 sudo chmod a+x FoxitReader*.run
 ./FoxitReader.*.run
 sudo ./FoxitReader.*.run
+export PATH=$PATH:/home/wqkhan/Documents/installs/pycharm-community-2016.3.2/bin/
