@@ -9,7 +9,7 @@ echo "updating repositories"
 apt-get update
 
 echo "Installing packages"
-apt-get install build-essential ubuntu-restricted-extras synaptic gcc g++ openssh-server openssh-client git terminator texlive-full mc texstudio vlc -y 
+apt-get install build-essential ubuntu-restricted-extras synaptic gcc g++ openssh-server openssh-client git xclip terminator texlive-full mc texstudio vlc -y 
 
 echo "Finished adding PPAs and insatlling applications"
 exit 0
