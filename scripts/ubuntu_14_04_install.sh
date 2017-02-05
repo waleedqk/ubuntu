@@ -14,4 +14,3 @@ apt-get install build-essential ubuntu-restricted-extras synaptic exfat-fuse exf
 echo "Finished adding PPAs and insatlling applications"
 exit 0
 
-
