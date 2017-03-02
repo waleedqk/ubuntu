@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#exit on first error
 set -e
 
 apt_update()
