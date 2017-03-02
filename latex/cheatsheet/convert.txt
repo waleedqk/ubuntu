@@ -1,0 +1,1 @@
+convert -density 300 Ubuntu_14_cheatsheet.pdf[0] image.jpg

@@ -1,0 +1,66 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[usenames,dvips,pdftex]{color}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[pdftex]{color,graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, filecolor=black, linkcolor=black, urlcolor=blue, citecolor=black}
+\graphicspath{{./images/}}
+
+ \geometry{
+ landscape,
+ paperwidth=13in,
+ left=12mm,
+ right=12mm
+ }
+ 
+% -----------------------------------------------------------------------
+\pagenumbering{gobble}
+
+\begin{document}
+\begin{multicols}{3}
+[
+\section*{Ubuntu 14.04}
+All human things are subject to decay. And when fate summons, Monarchs must obey.
+]
+
+\section*{System Information}
+\vspace{-0.7em}
+\begin{tabular}{l l}
+\texttt{\href{http://wiki.ros.org/rospack}{rospack}} & A tool for inspecting \href{http://wiki.ros.org/Packages}{packages}. \\
+\texttt{\href{http://docs.ros.org/independent/api/rospkg/html/rospack.html\#rospack-profile}{rospack profile}} & Fixes path and pluginlib problems. \\
+\texttt{\href{http://wiki.ros.org/rosbash\#roscd}{roscd}} & Change directory to a package. \\
+\end{tabular}
+
+\vfill
+\columnbreak
+
+\begin{tabular}{l l}
+\texttt{\href{http://wiki.ros.org/rospack}{rospack}} & A tool for inspecting \href{http://wiki.ros.org/Packages}{packages}. \\
+\texttt{\href{http://docs.ros.org/independent/api/rospkg/html/rospack.html\#rospack-profile}{rospack profile}} & Fixes path and pluginlib problems. \\
+\texttt{\href{http://wiki.ros.org/rosbash\#roscd}{roscd}} & Change directory to a package. \\
+\end{tabular}
+
+\vfill
+\columnbreak
+
+\begin{tabular}{l}
+Us\=age:\\
+\hspace{3ex} \texttt{\$ rospack find [package]}\\
+\hspace{3ex} \texttt{\$ roscd [package[/subdir]]}\\
+\hspace{3ex} \texttt{\$ rospd [package[/subdir] | +N | -N]}\\
+\hspace{3ex} \texttt{\$ rosd}\\
+\hspace{3ex} \texttt{\$ rosls [package[/subdir]]}\\
+\hspace{3ex} \texttt{\$ rosed [package] [file]}\\
+\hspace{3ex} \texttt{\$ roscp [package] [file] [destination]}\\
+\hspace{3ex} \texttt{\$ rosdep install [package]}\\
+\hspace{3ex} \texttt{\$ roswtf or roswtf [file]}\\
+\end{tabular}
+
+\vfill
+
+\end{multicols}
+ 
+\end{document}
