@@ -2,24 +2,35 @@
 
 set -e
 
-add_ppa()
-{
-	echo "Adding PPAs"
-	add-apt-repository ppa:gnome-terminator -y
-	add-apt-repository ppa:eugenesan/ppa -y
-	apt-add-repository ppa:blahota/texstudio -y
-}
-
 apt_update()
 {
 	echo "updating repositories"
 	apt-get update
 }
 
-install_packages()
+additional_ppa()
 {
-	echo "Installing packages"
-	apt-get install build-dep build-essential ubuntu-restricted-extras synaptic alacarte classicmenu-indicator gparted exfat-fuse exfat-utils gcc g++ openssh-server openssh-client git xclip terminator texlive-full mc texstudio vlc vim wireshark -y 
+	echo "Adding additional PPAs"
+	add-apt-repository ppa:gnome-terminator -y	
+	apt-add-repository ppa:blahota/texstudio -y
+}
+
+essential_ppa()
+{
+	echo "Adding essential PPAs"
+	add-apt-repository ppa:eugenesan/ppa -y
+}
+
+additional_packages()
+{
+	echo "Installing additional packages"
+	apt-get install terminator texlive-full texstudio vlc
+}
+
+essential_packages()
+{
+	echo "Installing essential packages"
+	apt-get install build-dep build-essential ubuntu-restricted-extras synaptic alacarte classicmenu-indicator gparted exfat-fuse exfat-utils gcc g++ openssh-server openssh-client git xclip mc vim wireshark tmux -y 
 }
 
 #add_ppa
