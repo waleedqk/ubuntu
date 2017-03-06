@@ -25,7 +25,7 @@ essential_ppa()
 additional_packages()
 {
 	echo "Installing additional packages"
-	apt-get install terminator texlive-full texstudio vlc
+	apt-get install eclipse eclipse-cdt terminator texlive-full texstudio vlc
 }
 
 essential_packages()
