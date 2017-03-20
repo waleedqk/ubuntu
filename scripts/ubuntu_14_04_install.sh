@@ -31,7 +31,7 @@ additional_packages()
 essential_packages()
 {
 	echo "Installing essential packages"
-	apt-get install build-dep build-essential ubuntu-restricted-extras synaptic alacarte classicmenu-indicator gparted exfat-fuse exfat-utils gcc g++ openssh-server openssh-client git xclip mc vim wireshark tmux -y 
+	apt-get install build-dep build-essential ubuntu-restricted-extras synaptic alacarte gnome-system-monitor classicmenu-indicator gparted exfat-fuse exfat-utils gcc g++ openssh-server openssh-client git xclip mc vim wireshark tmux -y 
 }
 
 #add_ppa
