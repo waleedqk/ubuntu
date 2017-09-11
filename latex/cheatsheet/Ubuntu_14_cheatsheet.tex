@@ -28,16 +28,25 @@ All human things are subject to decay. And when fate summons, Monarchs must obey
 
 \section*{Vim}
 \vspace{-0.7em}
+\texttt{\href{https://vim.rtorr.com/}{vim}} - text editor program for Unix \\
 \begin{tabular}{l l}
 \textbf{i} & enter insert mode\\
 \textbf{Esc} & enter command mode \\
-\textbf{k} & navigate up a line\\
-\textbf{j} & navigate down a line\\
-\textbf{h} & navigate left a character\\
-\textbf{l} & navigate right a character\\
+\textbf{k j h l } & navigate up down left right\\
+\textbf{Ctrl+E, Ctrl+Y} & scroll the window down or up\\ 
+\textbf{Ctrl+F, Ctrl+B} & scroll one page down or up\\
+\textbf{/pattern} & search for pattern\\
+\textbf{:cn} & jump to the next match\\
+\textbf{:cp} & jump to the previous match\\
 \textbf{V} & Select current line\\
+\textbf{yy} & copy a line\\
 \textbf{V+jj} & Select current line and lines below\\
-\textbf{\^\ w e \$} & beginning of line, word, end of word, end of line\\
+\textbf{y} & copy marked text\\
+\textbf{d} & delete marked text\\
+\textbf{p} & paste after cursor\\
+\textbf{P} & paste before cursor\\
+\textbf{\^\ w} & beginning of line, word\\
+\textbf{e \$} & end of word, line\\
 \textbf{o} & Insert at new line below\\
 \textbf{x} & delete character under cursor\\
 \textbf{dd} & delete line\\
@@ -52,42 +61,79 @@ All human things are subject to decay. And when fate summons, Monarchs must obey
 \vfill
 \columnbreak
 
+\section*{tmux}
+\vspace{-0.7em}
 \begin{tabular}{l l}
-\texttt{\href{http://wiki.ros.org/rospack}{rospack}} & A tool for inspecting \href{http://wiki.ros.org/Packages}{packages}. \\
-\texttt{\href{http://docs.ros.org/independent/api/rospkg/html/rospack.html\#rospack-profile}{rospack profile}} & Fixes path and pluginlib problems. \\
-\texttt{\href{http://wiki.ros.org/rosbash\#roscd}{roscd}} & Change directory to a package. \\
+\textbf{Ctrl-b c} & create new window\\
+\textbf{Ctrl-b \&} & kill current window\\
+\textbf{Ctrl-b ,} & rename window\\
+\textbf{Ctrl-b p n} & go to previous or next window\\
+\textbf{Ctrl-b w} & list of all window\\
+\textbf{Ctrl-b \%} & create pane vertically\\
+\textbf{Ctrl-b "} & create pane horizontally\\
+\textbf{Ctrl-b o} & Switch to the next pane\\
+\textbf{Ctrl-b \{} & Move the current pane left\\
+\textbf{Ctrl-b \}} & Move the current pane right\\
+\textbf{Ctrl-b :} & Make a pane its own window\\
+\end{tabular}
+\\ \\
+\textbf{Sessions}
+\\
+\begin{tabular}{l l}
+\textbf{tmux ls} & tmux list-sessions\\
+\textbf{tmux new -s sessionName} & Start new session\\
+\textbf{Ctrl-b d} & Detach from session\\
+\textbf{tmux attach -t [session name]} & reattach to session\\
+\textbf{tmux kill-session -t session-name} & kill session\\
+\textbf{tmux kill-server} & kill all tmux open sessions\\
+\end{tabular}
+
+\section*{i3wm}
+\vspace{-0.7em}
+\texttt{\href{https://i3wm.org/docs/userguide.html}{i3}} - improved tiling wm \\
+\textbf{mod} - window or Alt key\\
+\begin{tabular}{l l}
+\textbf{\$mod+Enter} & open new terminal \\
+\textbf{\$mod+v \$mod+Enter} & split window vertically \\
+\textbf{\$mod+h \$mod+Enter} & split window horizontally \\
+\textbf{\$mod +j, +k, +l, +;} & focus left, down, up, right \\
+\textbf{\$mod+Shift+q} & kill a window \\
+\textbf{\$mod+num} & switch to workspace num \\
+\textbf{\$mod+Shift+num} & move a window to another workspace \\
+\textbf{\$mod+Shift+r} &  restart i3 in place \\
 \end{tabular}
 
 \vfill
 \columnbreak
-
+\textbf{Terminal:}\\
 \begin{tabular}{l}
-Us\=age:\\
-\hspace{3ex} \texttt{\$ rospack find [package]}\\
-\hspace{3ex} \texttt{\$ roscd [package[/subdir]]}\\
-\hspace{3ex} \texttt{\$ rospd [package[/subdir] | +N | -N]}\\
-\hspace{3ex} \texttt{\$ rosd}\\
-\hspace{3ex} \texttt{\$ rosls [package[/subdir]]}\\
-\hspace{3ex} \texttt{\$ rosed [package] [file]}\\
-\hspace{3ex} \texttt{\$ roscp [package] [file] [destination]}\\
-\hspace{3ex} \texttt{\$ rosdep install [package]}\\
-\hspace{3ex} \texttt{\$ roswtf or roswtf [file]}\\
+\hspace{1ex} \texttt{\$ ls -al} \\
+\hspace{1ex} \texttt{\$ Ctrl+a , e}  \\
+\hspace{1ex} \texttt{\$ Ctrl+r} \\
+\hspace{1ex} \texttt{\$ touch file.ext} \\
+\hspace{1ex} \texttt{\$ mkdir -p newFolder/newFodlerAgain} \\
+\hspace{1ex} \texttt{\$ mv -i /path/to/file/fileName.ext /new/destination/path/} \\
+\hspace{1ex} \texttt\$ {mv -R /path/to/folder/ /new/destination/folder/}  \\
+\hspace{1ex} \texttt{\$ rm -rf ~/path/to/folder/to/Delete/} \\
+\hspace{1ex} \texttt{\$ ln -s [fileToLink] [symbolicLinkLocation]} \\
 \end{tabular}
 
-\section*{terminator}
-\vspace{-0.7em}
-\texttt{\href{https://linux.die.net/man/1/terminator}{terminator}} - Multiple GNOME terminals in one window
-\begin{tabular}{l l}
-\textbf{Ctrl+Shift+O} & Split terminals Horizontally \\
-\textbf{Ctrl+Shift+E} & Split terminals Vertically \\
-\textbf{Ctrl+Shift+T} & Open new tab \\
-\textbf{Ctrl+PageDown/PageUp} & Move between tab \\
-\textbf{Ctrl+Shift+F} & Search within terminal scrollback \\
-\textbf{Ctrl+Shift+W} & Close the current terminal \\
-\textbf{Ctrl+Shift+Q} & Quits Terminator \\
-\textbf{F11} & Toggle fullscreen \\
-\textbf{Super + i} & Spawn a new Terminator process
+\vspace{0.7em}
+\textbf{Search:}\\
+\begin{tabular}{l}
+\hspace{1ex} \texttt{\$ find /start/location -name nameOfFolder -type d }\\
+\hspace{1ex} \texttt{\$ find /start/location -name "fileNameContains" -type f }\\
+\hspace{1ex} \texttt{\$ find . -name "*.txt" -type f -delete }\\
+\hspace{1ex} \texttt{\$ ps aux | grep processName }\\
 \end{tabular}
+
+\vspace{0.7em}
+\textbf{Network:}\\
+\begin{tabular}{l}
+\hspace{1ex} \texttt{\$ ifconfig wlan0 down }\\
+\hspace{1ex} \texttt{\$ ifconfig wlan0 up }\\
+\end{tabular}
+
 \vfill
 
 \end{multicols}

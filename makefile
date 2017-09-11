@@ -6,7 +6,10 @@ clean:
 pull:
 	git pull --all
 
-git: clean
+push: 
 	git add *
 	git commit -m "Commit"
-	git push -u origin master
+	git push origin master	
+
+git: clean push
+
