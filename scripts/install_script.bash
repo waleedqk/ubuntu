@@ -25,6 +25,8 @@ add_16_ppa()
 
 install_16_packages()
 {
+	# need to update to include added PPA
+	apt_update
 	echo "Installing packages"
 	apt-get install build-essential ubuntu-restricted-extras synaptic exfat-fuse exfat-utils cron cmake gcc g++ openssh-server openssh-client git gparted screen gksu dkms gzip cifs-utils xclip terminator tmux shutter sqlite3 texlive-full mc texstudio vlc vim wireshark tcpdump telnet handbrake-gtk handbrake-cli espeak -y 
 }
