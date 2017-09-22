@@ -28,7 +28,7 @@ install_16_packages()
 	# need to update to include added PPA
 	apt_update
 	echo "Installing packages"
-	apt-get install build-essential ubuntu-restricted-extras synaptic exfat-fuse exfat-utils cron cmake gcc g++ openssh-server openssh-client git i3 gparted screen gksu dkms gzip cifs-utils xclip terminator tmux shutter sqlite3 texlive-full mc texstudio vlc vim wireshark tcpdump telnet handbrake-gtk handbrake-cli espeak -y 
+	apt-get install build-essential ubuntu-restricted-extras synaptic exfat-fuse exfat-utils cron cmake gcc g++ openssh-server openssh-client git i3 gparted ntp screen gksu dkms gzip cifs-utils xclip terminator tmux shutter sqlite3 texlive-full mc texstudio vlc vim wireshark tcpdump telnet handbrake-gtk handbrake-cli espeak -y 
 }
 
 install_gchrome()
