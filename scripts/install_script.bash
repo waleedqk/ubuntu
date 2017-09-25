@@ -31,6 +31,14 @@ install_16_packages()
 	apt-get install build-essential ubuntu-restricted-extras synaptic exfat-fuse exfat-utils cron cmake gcc g++ openssh-server openssh-client git i3 gparted ntp screen gksu dkms gzip cifs-utils xclip terminator tmux shutter sqlite3 texlive-full mc texstudio vlc vim wireshark tcpdump telnet handbrake-gtk handbrake-cli espeak youtube-dl dconf-editor -y 
 }
 
+configure_16()
+{
+	echo "Give user privelages for wireshark"
+	sudo dpkg-reconfigure wireshark-common
+	echo "a wireshark group been created in /etc/gshadow. so add user to it"
+	sudo gpasswd -a $USER wireshark
+}
+
 install_gchrome()
 {
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
@@ -50,6 +58,7 @@ then
 	#Run this function
 	#add_16_ppa
 	install_16_packages
+	#configure_16
 	#install_gchrome
 
 elif [[ `lsb_release -rs` == "14.04" ]] # for Ubuntu 14.04
