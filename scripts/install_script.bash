@@ -77,6 +77,7 @@ main_16()
 	echo ""	
 	#install_gchrome
 	#configure_16
+	#git_config
 	#install_ros
 
 }
@@ -119,6 +120,12 @@ add_16_ppa()
 	echo "Updating package lists ..."
 	sudo apt-get update -qq
 
+}
+
+git_config() {
+    git config --global user.name "Waleed Khan"
+    git config --global user.email "waleedqk@gmail.com"
+    #git config --global push.default matching
 }
 
 configure_16()
