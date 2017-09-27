@@ -1,0 +1,65 @@
+
+define_aliases()
+{
+	# Add an "alert" alias for long running commands.  Use like so:
+	#   sleep 10; alert
+	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+	source_file ~/.bash_aliases
+
+	# ls aliases
+	alias ll='ls -alF'
+	alias la='ls -A'
+	alias l='ls -CF'
+
+	# apt-get aliases
+	alias update='sudo apt-get update'
+	alias install='sudo apt-get install'
+	alias upgrade='sudo apt-get upgrade'
+
+	# git aliases
+	alias gits='git status'
+	alias gita='git add -A . && git status'
+	alias gitc='git commit -m'
+	alias gitp='git pull'
+
+	# ROS
+	alias cws='cd ~/catkin_ws'
+	alias catb='(cd ~/catkin_ws && catkin build)'
+	alias catc='(cd ~/catkin_ws && catkin clean -y)'
+	alias qcws='cd ~/qnx_catkin_ws'
+	alias qcatb='(cd ~/qnx_catkin_ws && qnxros build)'
+	alias qcatc='(cd ~/qnx_catkin_ws && qnxros clean)'
+}
+
+application_specific()
+{
+	# ROS
+	#source_file /opt/ros/indigo/setup.bash
+	source_file /opt/ros/kinetic/setup.bash
+	source_file ~/catkin_ws/devel/setup.bash
+	export QNXROS_WS="$HOME/qnx_catkin_ws"
+	source_file ~/Documents/wavelab/renesas-demo/scripts/qnx/qnxros.bash
+
+	# anm_sim
+	source_file ~/anm_sim/vrep_test_suite/scripts/test_suite_lib.bash
+
+	# V-REP
+	export VREP_ROOT=$HOME/opt/vrep/V-REP_PRO_EDU_V3_4_0_Linux
+
+
+	# pip packages
+	PATH=$PATH:~/.local/bin
+
+	export PATH
+}
+
+source_file()
+{
+	if [ -f "$1" ]; then
+		source "$1"
+	fi
+}
+
+define_aliases
+application_specific
