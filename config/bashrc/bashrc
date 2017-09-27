@@ -30,6 +30,10 @@ define_aliases()
 	alias qcws='cd ~/qnx_catkin_ws'
 	alias qcatb='(cd ~/qnx_catkin_ws && qnxros build)'
 	alias qcatc='(cd ~/qnx_catkin_ws && qnxros clean)'
+
+	# Other
+	alias sbrc='source ~/.bashrc'
+	alias clr='clear'
 }
 
 application_specific()
@@ -42,7 +46,7 @@ application_specific()
 	source_file ~/Documents/wavelab/renesas-demo/scripts/qnx/qnxros.bash
 
 	# anm_sim
-	source_file ~/anm_sim/vrep_test_suite/scripts/test_suite_lib.bash
+	source ~/anm_sim/vrep_test_suite/scripts/test_suite_lib.bash
 
 	# V-REP
 	export VREP_ROOT=$HOME/opt/vrep/V-REP_PRO_EDU_V3_4_0_Linux
