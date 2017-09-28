@@ -39,6 +39,7 @@ APP_LIST=(
 	openssh-client
 	openssh-server
 	openvpn
+	packeth
 	python-pip
 	python3-pip
 	screen
