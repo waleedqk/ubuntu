@@ -34,6 +34,7 @@ APP_LIST=(
 	inkscape
 	mc
 	minecraft-installer
+	netcat
 	nmap
 	ntp
 	openssh-client
