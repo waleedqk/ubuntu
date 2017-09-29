@@ -11,6 +11,7 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 # APP LIST
 APP_LIST=(
 	arandr
+	arc-theme
 	build-essential
 	cifs-utils
 	cmake
@@ -29,6 +30,7 @@ APP_LIST=(
 	gcc
 	git
 	gksu
+	gnome-icon-theme-full
 	gparted
 	gzip
 	handbrake-gtk 
@@ -39,6 +41,7 @@ APP_LIST=(
 	lxappearance
 	mc
 	minecraft-installer
+	moka-icon-theme faba-icon-theme faba-mono-icons
 	netcat
 	nmap
 	ntp
@@ -48,6 +51,7 @@ APP_LIST=(
 	packeth
 	python-pip
 	python3-pip
+	rofi
 	screen
 	shutter
 	spotify-client
@@ -61,6 +65,7 @@ APP_LIST=(
 	telnet
 	texlive-full
 	texstudio
+	thunar
 	tree
 	tmux
 	ubuntu-restricted-extras
@@ -127,6 +132,16 @@ add_16_ppa()
 
 	# Infinality (font renderer) http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
 	sudo add-apt-repository ppa:no1wantdthisname/ppa
+
+	# Arc Dark theme
+	wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
+    sudo apt-key add - < Release.key
+	rm ~/Release.key
+	sudo apt-get update
+    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
+
+	# Moka icon 
+	sudo add-apt-repository ppa:moka/daily
 
 	echo "Updating package lists ..."
 	sudo apt-get update -qq
