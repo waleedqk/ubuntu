@@ -1,5 +1,13 @@
 # i3 system fonts
 
+**icons to fonts - font-awesome**
+
+    sudo apt-get install fonts-font-awesome
+
+### download https://github.com/FortAwesome/Font-Awesome/releases
+### get the file FontAwesome/fonts/*.ttt
+### copy it to ~/.fonts/
+
 **Download YosemiteSanFranciscoFont**
 
 ###  Download the repo
