@@ -38,6 +38,7 @@ APP_LIST=(
 	handbrake-cli
 	htop
 	i3
+	i3blocks
 	inkscape
 	lxappearance
 	mc
