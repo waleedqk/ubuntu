@@ -10,6 +10,7 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 
 # APP LIST
 APP_LIST=(
+	arandr
 	build-essential
 	cifs-utils
 	cmake
@@ -21,6 +22,9 @@ APP_LIST=(
 	exfat-fuse
 	exfat-utils
 	expect
+	feh
+	fontconfig-infinality
+	fonts-font-awesome
 	g++
 	gcc
 	git
@@ -32,6 +36,7 @@ APP_LIST=(
 	htop
 	i3
 	inkscape
+	lxappearance
 	mc
 	minecraft-installer
 	netcat
@@ -64,6 +69,7 @@ APP_LIST=(
 	vlc
 	wireshark
 	xclip
+	xrandr
 	youtube-dl
 )
 
@@ -99,10 +105,10 @@ add_16_ppa()
 	#add-apt-repository ppa:gnome-terminator/ppa -y
 
 	# open source video transcoder
-	add-apt-repository ppa:stebbins/handbrake-releases -y
+	sudo add-apt-repository ppa:stebbins/handbrake-releases -y
 
 	# shutter
-	add-apt-repository ppa:shutter/ppa
+	sudo add-apt-repository ppa:shutter/ppa
 
 	# minecraft
 	sudo add-apt-repository -y ppa:minecraft-installer-peeps/minecraft-installer
@@ -118,6 +124,9 @@ add_16_ppa()
 	# Spotify
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 	echo 'deb http://repository.spotify.com stable non-free' | sudo tee /etc/apt/sources.list.d/spotify.list
+
+	# Infinality (font renderer) http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
+	sudo add-apt-repository ppa:no1wantdthisname/ppa
 
 	echo "Updating package lists ..."
 	sudo apt-get update -qq

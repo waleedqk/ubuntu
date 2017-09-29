@@ -6,9 +6,12 @@
 
 **Close Application**
 
-    Mod+Shift+Q
+    Mod+Shift+q
 
 **Open Application Menu**
 
     Mod+d
 
+**Reload i3**
+
+    Mod+shift+r
