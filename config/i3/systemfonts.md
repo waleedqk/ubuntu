@@ -52,6 +52,10 @@
     sudo apt-get update
     sudo apt-get install moka-icon-theme faba-icon-theme faba-mono-icons
 
-**Rafi**
+**Rafi - replace dmenu_run**
 
     sudo apt-get install rofi
+
+**Compton - transparent windows**
+
+    sudo apt-get install compton

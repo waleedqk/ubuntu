@@ -15,6 +15,7 @@ APP_LIST=(
 	build-essential
 	cifs-utils
 	cmake
+	compton
 	cron
 	dconf-editor
 	dkms
