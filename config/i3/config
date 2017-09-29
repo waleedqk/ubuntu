@@ -102,16 +102,16 @@ bindsym $mod+a focus parent
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # give workspaces names
-set $workspcae1 "1:"
-set $workspcae2 "2: chrome"
+set $workspcae1 "1: "
+set $workspcae2 "2: "
 set $workspcae3 "3:"
-set $workspcae4 "4:"
-set $workspcae5 "5:"
-set $workspcae6 "6:"
-set $workspcae7 "7:"
-set $workspcae8 "8:"
-set $workspcae9 "9:"
-set $workspcae10 "0:"
+set $workspcae4 "4: "
+set $workspcae5 "5: "
+set $workspcae6 "6: "
+set $workspcae7 "7: "
+set $workspcae8 "8: "
+set $workspcae9 "9: "
+set $workspcae10 "0: "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspcae1
