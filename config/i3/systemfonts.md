@@ -21,10 +21,12 @@
 ### if not, make a mior change like change font size, this should create some config files
 ### open ~/.gtkrc-2.0 and update the following
 
+    vim ~/.gtkrc-2.0
     gtk-font-name="System San Francisco Display 12"
 
 ### also open ~/.config/gtk-3.0/settings.ini and update
 
+    vim ~/.config/gtk-3.0/settings.ini
     gtk-font-name=System San Francisco Display 12
 
 **i3 thunar window explorer**
