@@ -76,7 +76,7 @@ APP_LIST=(
 	vlc
 	wireshark
 	xclip
-	xrandr
+	#xrandr
 	youtube-dl
 )
 
@@ -133,17 +133,16 @@ add_16_ppa()
 	echo 'deb http://repository.spotify.com stable non-free' | sudo tee /etc/apt/sources.list.d/spotify.list
 
 	# Infinality (font renderer) http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
-	sudo add-apt-repository ppa:no1wantdthisname/ppa
+	sudo add-apt-repository ppa:no1wantdthisname/ppa -y
 
 	# Arc Dark theme
 	wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
     sudo apt-key add - < Release.key
-	rm ~/Release.key
 	sudo apt-get update
     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
 
 	# Moka icon 
-	sudo add-apt-repository ppa:moka/daily
+	sudo add-apt-repository ppa:moka/daily -y
 
 	echo "Updating package lists ..."
 	sudo apt-get update -qq

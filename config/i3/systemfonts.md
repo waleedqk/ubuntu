@@ -27,7 +27,7 @@
 
 **Update gtk fonts**
 
-    sudp apt-get install lxappearance
+    sudo apt-get install lxappearance
 
 ### open lxappearance and in there under fefault font see if System San Francisco Display shows up
 ### if not, make a mior change like change font size, this should create some config files
@@ -52,7 +52,7 @@
 
     wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
     sudo apt-key add - < Release.key
-    rm ~/Release.key
+    # rm ~/Release.key
     sudo apt-get update
     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
     sudo apt-get update
