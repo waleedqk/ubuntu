@@ -30,10 +30,10 @@
 
 **paste text**
 
-### to paste in another vim file
+### to paste in another vim file after the cursor
 
     p
 
-### to paste in the terminal
+### to paste in another vim file before the cursor
 
-    
+    P
