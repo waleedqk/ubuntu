@@ -26,7 +26,11 @@ set tabstop=4
 set shiftwidth=5
 set expandtab
 
+" open a NERDTree automatically when vim starts up
+" autocmd vimenter * NERDTree
 
+" map a specific key or shortcut to open NERDTree
+map <F2> :NERDTreeToggle<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
