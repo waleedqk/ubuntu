@@ -10,9 +10,13 @@
 
     <arrow-keys>
 
-### to copy the selected region
+**yank (copy) marked text**
 
     y
+
+**yank (copy) to end of line**
+
+    y$
 
 **cut text**
 
