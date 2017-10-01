@@ -6,9 +6,13 @@
 
     shift+v
 
- ### use arrow keys to highlight the desired region
+### use arrow keys to highlight the desired region
 
     <arrow-keys>
+
+**delete the marked text**
+
+    d
 
 **yank (copy) marked text**
 
