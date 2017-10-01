@@ -161,6 +161,10 @@ configure_16()
 	sudo dpkg-reconfigure wireshark-common
 	echo "a wireshark group been created in /etc/gshadow. so add user to it"
 	sudo gpasswd -a $USER wireshark
+
+	# add the vundle repo to vim
+	mkdir -p ~/.vim/bundle
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
 install_gchrome()
