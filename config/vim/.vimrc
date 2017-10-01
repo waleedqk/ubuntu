@@ -11,6 +11,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Essential Plugins
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-vinegar'
+Plugin 'kien/ctrlp.vim'
+
 set number
 set relativenumber
 
