@@ -25,6 +25,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=5
 set expandtab
+set clipboard=unnamed
 
 " open a NERDTree automatically when vim starts up
 " autocmd vimenter * NERDTree
