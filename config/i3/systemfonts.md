@@ -29,7 +29,7 @@
 
     sudo apt-get install lxappearance
 
-### open lxappearance and in there under fefault font see if System San Francisco Display shows up
+### open lxappearance and in there under default font see if System San Francisco Display shows up
 ### if not, make a mior change like change font size, this should create some config files
 ### open ~/.gtkrc-2.0 and update the following
 
