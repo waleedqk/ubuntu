@@ -51,6 +51,7 @@ APP_LIST=(
 	openssh-server
 	openvpn
 	packeth
+	pavucontrol
 	python-pip
 	python3-pip
 	rofi
