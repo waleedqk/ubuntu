@@ -33,6 +33,7 @@ APP_LIST=(
 	gksu
 	gnome-icon-theme-full
 	gparted
+	gpsprune
 	gzip
 	handbrake-gtk 
 	handbrake-cli
