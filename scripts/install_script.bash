@@ -55,6 +55,7 @@ APP_LIST=(
 	pavucontrol
 	python-pip
 	python3-pip
+	python-nmap
 	rofi
 	screen
 	shutter
