@@ -56,6 +56,7 @@ APP_LIST=(
 	python-pip
 	python3-pip
 	python-nmap
+	python3-nmap
 	rofi
 	screen
 	shutter
