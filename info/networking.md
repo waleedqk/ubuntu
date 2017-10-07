@@ -22,6 +22,12 @@
     sudo iwconfig wlp3s0 essid BELL28
     iwconfig wlp3s0
 
+### get IP address on the interface
+
+    sudo dhclient wlp3s0
+    ifconfig wlp3s0
+        
+
 ### alternatively search for connections on specified interface
 
     sudo iwlist wlp3s0 scan
