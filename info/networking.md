@@ -17,6 +17,11 @@
     sudo iwlist scan
     sudo iwlist scan | grep ESSID
 
+**Interface with an SSID**
+
+    sudo iwconfig wlp3s0 essid BELL28
+    iwconfig wlp3s0
+
 ### alternatively search for connections on specified interface
 
     sudo iwlist wlp3s0 scan
