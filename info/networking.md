@@ -17,6 +17,12 @@
     sudo iwlist scan
     sudo iwlist scan | grep ESSID
 
+
+### alternatively search for connections on specified interface
+
+    sudo iwlist wlp3s0 scan
+    sudo iwlist wlp3s0 scan | grep ESSID
+
 **Interface with an SSID**
 
     sudo iwconfig wlp3s0 essid BELL28
@@ -27,12 +33,6 @@
     sudo dhclient wlp3s0
     ifconfig wlp3s0
         
-
-### alternatively search for connections on specified interface
-
-    sudo iwlist wlp3s0 scan
-    sudo iwlist wlp3s0 scan | grep ESSID
-
 **edit /etc/network/interfaces**
 
     sudo vim /etc/network/interface
