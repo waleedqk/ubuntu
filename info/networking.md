@@ -8,6 +8,10 @@
 
     sudo ifconfig wlp3s0 up
 
+**wireless interface capabilities**
+
+    iwconfig wlp3s0
+
 **search for available connections on all networks intefaces**
 
     sudo iwlist scan
