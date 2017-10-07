@@ -33,6 +33,7 @@ APP_LIST=(
 	gksu
 	gnome-icon-theme-full
 	gparted
+	gpsprune
 	gzip
 	handbrake-gtk 
 	handbrake-cli
@@ -51,9 +52,15 @@ APP_LIST=(
 	openssh-server
 	openvpn
 	packeth
+	pavucontrol
 	python-pip
 	python3-pip
+<<<<<<< HEAD
 	python3-tk
+=======
+	python-nmap
+	python3-nmap
+>>>>>>> 6bce8ef87041f9caba9841c76243abf75f5e0d65
 	rofi
 	screen
 	shutter
