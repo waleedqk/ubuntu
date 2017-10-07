@@ -53,6 +53,7 @@ APP_LIST=(
 	packeth
 	python-pip
 	python3-pip
+	python3-tk
 	rofi
 	screen
 	shutter
