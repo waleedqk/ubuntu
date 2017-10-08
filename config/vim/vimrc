@@ -26,7 +26,12 @@ set smartindent
 set tabstop=4
 set shiftwidth=5
 set expandtab
+
+" Used shared clipboard to copy paste between vim and terminal
 set clipboard=unnamed
+
+" Use mouse to switch between windows
+set mouse=a
 
 " open a NERDTree automatically when vim starts up
 " autocmd vimenter * NERDTree
