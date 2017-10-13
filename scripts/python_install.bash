@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
@@ -19,6 +19,7 @@ PIP3_LIST=(
 )
 
 APP3_LIST=(
+	python3-automaton
 	python3-nmap
 	python3-pygraphviz
 	python3-requests
