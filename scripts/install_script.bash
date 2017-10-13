@@ -55,11 +55,6 @@ APP_LIST=(
 	pavucontrol
 	python-pip
 	python3-pip
-	python-pygraphviz
-	python3-pygraphviz
-	python3-tk
-	python-nmap
-	python3-nmap
 	rofi
 	screen
 	shutter
@@ -87,21 +82,39 @@ APP_LIST=(
 	youtube-dl
 )
 
+install_app()
+{
+	echo "Installing apps now ..."
+	sudo apt-get -y install "${APP_LIST[@]}"
+}
+
 main_16()
 {
 	apt_update
 	clear
-	#add_16_ppa
 
-	echo "Installing apps now ..."
-	sudo apt-get -y install "${APP_LIST[@]}"
-
-	echo ""	
-	#install_gchrome
-	#configure_16
-	#git_config
+    if [[ -z $1 ]]; then
+        echo "No command provided"
+		install_app
+	else
+        case "$1" in
+            "install")
+			install_app
+			;;
+            "ppa")
+			add_16_ppa
+			install_app
+			;;
+			"all")
+			add_16_ppa
+			install_app
+			install_gchrome
+			configure_16
+			git_config
+			;;
+        esac
+    fi
 	#install_ros
-
 }
 
 apt_update()
@@ -216,7 +229,7 @@ install_ros()
 }
 
 # Update System
-apt_update
+# apt_update
 
 case $UBUNTU_CODENAME in
 	trusty)
