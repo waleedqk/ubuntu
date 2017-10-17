@@ -35,7 +35,7 @@
         
 **edit /etc/network/interfaces**
 
-    sudo vim /etc/network/interface
+    sudo vim /etc/network/interfaces
 
 ### add the follwing lines   
 
@@ -55,7 +55,7 @@
 **restart networking service**
 
     sudo service network-manager restart
-    sudo service networking restart      
+    sudo service networking restart
 
 **list obtained IP Address**
 
