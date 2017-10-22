@@ -12,8 +12,11 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 APP_LIST=(
 	arandr
 	arc-theme
+	atom
 	build-essential
 	cifs-utils
+	clang
+	clang-format
 	cmake
 	compton
 	cron
@@ -82,10 +85,30 @@ APP_LIST=(
 	youtube-dl
 )
 
-install_app()
+# This list is specifically for plugin packages for the Atom text editor
+ATOM_PACKAGES=(
+	atom-beautify
+	autocomplete-clang
+	busy-signal
+	clang-format
+	git-time-machine
+	intentions
+	linter
+	linter-ui-default
+	linter-clang
+	linter-shellcheck
+	linter-cpplint
+	language-lua
+	language-cmake
+	markdown-pdf
+	minimap
+	remote-edit
+)
+
+apt_update()
 {
-	echo "Installing apps now ..."
-	sudo apt-get -y install "${APP_LIST[@]}"
+	echo "update..."
+	apt-get update
 }
 
 main_16()
@@ -106,26 +129,24 @@ main_16()
 			install_app
 			;;
 			"all")
+			remove_stuff
 			add_16_ppa
 			install_app
 			install_gchrome
 			configure_16
 			git_config
+			setup_vim
+			install_atom_packages "${ATOM_PACKAGES[@]}"
 			;;
         esac
     fi
 	#install_ros
 }
 
-apt_update()
-{
-	echo "update..."
-	apt-get update
-}
-
 add_16_ppa()
 {
 	echo "Adding PPAs"
+
 	sudo add-apt-repository "deb http://archive.canonical.com/ubuntu $(lsb_release -sc) partner"
 	
 	# terminator terminal
@@ -139,6 +160,9 @@ add_16_ppa()
 
 	# minecraft
 	sudo add-apt-repository -y ppa:minecraft-installer-peeps/minecraft-installer
+
+	# atom
+	sudo add-apt-repository -y ppa:webupd8team/atom
 
 	# Syncthing
 	curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
@@ -157,9 +181,9 @@ add_16_ppa()
 
 	# Arc Dark theme
 	wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
-    sudo apt-key add - < Release.key
+    	sudo apt-key add - < Release.key
 	sudo apt-get update
-    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
+    	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
 
 	# Moka icon 
 	sudo add-apt-repository ppa:moka/daily -y
@@ -167,6 +191,36 @@ add_16_ppa()
 	echo "Updating package lists ..."
 	sudo apt-get update -qq
 
+}
+
+install_app()
+{
+	echo "Installing apps now ..."
+	sudo apt-get -y install "${APP_LIST[@]}"
+}
+
+remove_stuff()
+{
+	# Remove unused folders
+	rm -rf ~/Templates
+	rm -rf ~/Examples
+}
+
+setup_vim()
+{
+	BUNDLE="$HOME/.vim/bundle"
+	if [ ! -d "$BUNDLE/Vundle.vim" ]; then
+		mkdir -p "$BUNDLE"
+		git clone https://github.com/VundleVim/Vundle.vim.git "$BUNDLE/Vundle.vim"
+	fi
+
+	# Update existing (or new) installation
+	cd "$BUNDLE/Vundle.vim"
+	git pull -q
+	# In order to update Vundle.vim and all your plugins directly from the command line you can use a command like this:
+	vim -c VundleInstall -c quitall
+	
+	echo "Vim setup updated."
 }
 
 git_config() {
@@ -183,8 +237,8 @@ configure_16()
 	sudo gpasswd -a $USER wireshark
 
 	# add the vundle repo to vim
-	mkdir -p ~/.vim/bundle
-	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	# mkdir -p ~/.vim/bundle
+	# git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
 install_gchrome()
@@ -195,6 +249,17 @@ install_gchrome()
 	sudo apt-get install google-chrome-stable -y
 }
 
+install_atom_packages()
+{
+	ARRAY=("$@")
+	for atmpkg in "${ARRAY[@]}"; do
+		if [[ ! -d "$HOME/.atom/packages/$atmpkg" ]]; then
+			apm install "$atmpkg"
+		else
+			echo "atom package $atmpkg is already installed"
+		fi
+	done
+}
 
 install_ros()
 {
@@ -228,18 +293,12 @@ install_ros()
 	rosdep update > /dev/null
 }
 
-# Update System
-# apt_update
-
 case $UBUNTU_CODENAME in
 	trusty)
 		main_14;;
 	xenial)
-		main_16;;
+		(main_16 "$@");;
 	*)
 		echo "Unsupported version of Ubuntu detected. Only trusty (14.04.*) and xenial (16.04.*) are currently supported."
-	exit 1
+		exit 1;;
 esac
-
-
-
