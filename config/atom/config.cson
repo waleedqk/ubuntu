@@ -1,0 +1,27 @@
+"*":
+  core:
+    disabledPackages: [
+      "autocomplete-snippets"
+      "linter-cpplint"
+      "autocomplete-atom-api"
+      "linter-shellcheck"
+      "activate-power-mode"
+      "clang-format"
+      "autocomplete-clang"
+      "linter-clang"
+      "language-gfm"
+    ]
+    telemetryConsent: "no"
+  editor:
+    showInvisibles: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "f24642df-8d70-4dec-aa74-96f811613f01"
+  "file-icons":
+    coloured: false
+  "linter-ui-default":
+    panelHeight: 144
+    telemetryConsent: "no"
+    useBusySignal: false
+  "tool-bar":
+    position: "Left"
