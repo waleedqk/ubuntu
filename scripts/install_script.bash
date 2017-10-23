@@ -122,7 +122,7 @@ main_16()
     if [[ -z $1 ]]; then
         echo "No command provided"
         install_app
-        install_atom_packages "${ATOM_PACKAGES[@]}"
+	setup_vim
     else
         case "$1" in
             "install")
