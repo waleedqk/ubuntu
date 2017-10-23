@@ -38,7 +38,7 @@ APP_LIST=(
 	gparted
 	gpsprune
 	gzip
-	handbrake-gtk 
+	handbrake-gtk
 	handbrake-cli
 	htop
 	i3
@@ -50,6 +50,7 @@ APP_LIST=(
 	moka-icon-theme faba-icon-theme faba-mono-icons
 	netcat
 	nmap
+	npm
 	ntp
 	openssh-client
 	openssh-server
@@ -102,6 +103,7 @@ ATOM_PACKAGES=(
 	language-cmake
 	markdown-pdf
 	minimap
+	platformio-ide
 	remote-edit
 )
 
@@ -136,6 +138,7 @@ main_16()
 			configure_16
 			git_config
 			setup_vim
+			npm install -g node-gyp
 			install_atom_packages "${ATOM_PACKAGES[@]}"
 			;;
         esac
@@ -148,7 +151,7 @@ add_16_ppa()
 	echo "Adding PPAs"
 
 	sudo add-apt-repository "deb http://archive.canonical.com/ubuntu $(lsb_release -sc) partner"
-	
+
 	# terminator terminal
 	#add-apt-repository ppa:gnome-terminator/ppa -y
 
@@ -185,7 +188,7 @@ add_16_ppa()
 	sudo apt-get update
     	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
 
-	# Moka icon 
+	# Moka icon
 	sudo add-apt-repository ppa:moka/daily -y
 
 	echo "Updating package lists ..."
@@ -219,7 +222,7 @@ setup_vim()
 	git pull -q
 	# In order to update Vundle.vim and all your plugins directly from the command line you can use a command like this:
 	vim -c VundleInstall -c quitall
-	
+
 	echo "Vim setup updated."
 }
 
@@ -243,9 +246,9 @@ configure_16()
 
 install_gchrome()
 {
-	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-	sudo apt-get update 
+	sudo apt-get update
 	sudo apt-get install google-chrome-stable -y
 }
 
