@@ -122,7 +122,6 @@ main_16()
     if [[ -z $1 ]]; then
         echo "No command provided"
         install_app
-	setup_vim
     else
         case "$1" in
             "install")
