@@ -104,7 +104,7 @@ ATOM_PACKAGES=(
     language-cmake
     markdown-pdf
     minimap
-    platformio-ide
+    pigments
     remote-edit
 )
 
@@ -140,7 +140,7 @@ main_16()
                 configure_16
                 git_config
                 setup_vim
-
+                # for atom-beautify
                 pip install beautysh
                 pip3 install beautysh
                 install_atom_packages "${ATOM_PACKAGES[@]}"
