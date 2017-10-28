@@ -139,6 +139,7 @@ main_16()
                 configure_16
                 git_config
                 setup_vim
+                update_config
                 # for atom-beautify
                 pip install beautysh
                 pip3 install beautysh
@@ -231,7 +232,7 @@ setup_vim()
 
 git_config() {
     git config --global user.name "Waleed Khan"
-    git config --global user.email "waleedqk@gmail.com"
+    git config --global user.email "wqkhan@uwaterloo.ca"
     #git config --global push.default matching
 }
 
@@ -241,10 +242,6 @@ configure_16()
     sudo dpkg-reconfigure wireshark-common
     echo "a wireshark group been created in /etc/gshadow. so add user to it"
     sudo gpasswd -a $USER wireshark
-
-    # add the vundle repo to vim
-    # mkdir -p ~/.vim/bundle
-    # git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
 install_gchrome()
@@ -253,6 +250,19 @@ install_gchrome()
     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     sudo apt-get update
     sudo apt-get install google-chrome-stable -y
+}
+
+update_config()
+{
+    if [ -f $HOME"/.vimrc" ] ; then
+        rm $HOME"/.vimrc"
+    fi
+    cp $REPO_DIR"/config/vim/vimrc" $HOME"/.vimrc"
+
+    if [ -f $HOME"/.tmux.conf" ] ; then
+        rm $HOME"/.tmux.conf"
+    fi
+    cp $REPO_DIR"/config/tmux/tmux.conf" $HOME"/.tmux.conf"
 }
 
 install_atom_packages()
