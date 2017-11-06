@@ -32,6 +32,7 @@ APP_LIST=(
     fonts-font-awesome
     g++
     gcc
+    gimp
     git
     gksu
     gnome-icon-theme-full
@@ -57,6 +58,7 @@ APP_LIST=(
     openvpn
     packeth
     pavucontrol
+    pinta
     python-pip
     python3-pip
     rofi
