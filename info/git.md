@@ -24,4 +24,6 @@
 
 **Change git access to SSH for repo**
 
+    https://help.github.com/articles/changing-a-remote-s-url/
+
     git remote set-url origin git@github.com:username/repo-name.git
