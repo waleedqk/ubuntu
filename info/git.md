@@ -7,6 +7,14 @@
     ssh-add ~/.ssh/id_rsa
     xclip -sel clip < ~/.ssh/id_rsa.pub
 
+**Show Branches**
+
+    git branch -a
+
+**Create new branch**
+
+    git checkout -b <branch-name>
+
 **Ignore Local changes - git pull**
 
     git fetch --all
