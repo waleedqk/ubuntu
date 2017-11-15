@@ -34,6 +34,7 @@ APP_LIST=(
     gcc
     gimp
     git
+    gitk
     gksu
     gnome-icon-theme-full
     gparted
