@@ -8,11 +8,21 @@
 
     systemctl status ssh.service
 
+**Check service status**
+
+    systemctl is-enabled ssh
+
 **Disable Service**
 
 So it does not start up on next boot
 
     sudo systemctl disable ssh.service
+
+**Enable Service**
+
+So it does starts up on next boot
+
+    sudo systemctl enable ssh.service
 
 **Stop a service**
 
@@ -29,3 +39,24 @@ or
 or
 
     sudo systemctl start ssh    
+
+**Restart a service**
+
+    sudo systemctl restart ssh.service
+
+or
+
+    sudo systemctl restart ssh    
+
+**See logging**
+
+    journalctl
+
+show log messages from this boot
+
+
+    journalctl -b
+
+log from a specified service
+
+    journalctl -u ssh    
