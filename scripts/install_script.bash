@@ -108,6 +108,7 @@ ATOM_PACKAGES=(
     language-cmake
     markdown-pdf
     minimap
+	minimap-git-diff
     minimap-highlight-selected
     pigments
     remote-edit
