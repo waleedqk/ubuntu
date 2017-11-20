@@ -95,6 +95,7 @@ ATOM_PACKAGES=(
     autocomplete-clang
     busy-signal
     clang-format
+	git-diff
     git-time-machine
     highlight-selected
     intentions
