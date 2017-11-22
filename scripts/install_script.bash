@@ -18,6 +18,7 @@ APP_LIST=(
     clang
     clang-format
     cmake
+    cmus
     compton
     cron
     dconf-editor
