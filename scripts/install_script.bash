@@ -66,6 +66,7 @@ APP_LIST=(
     rofi
     screen
     shutter
+    simplescreenrecorder simplescreenrecorder-lib
     spotify-client
     sqlite3
     ssh
@@ -201,6 +202,9 @@ add_16_ppa()
 
     # Moka icon
     sudo add-apt-repository ppa:moka/daily -y
+
+    # SimpleScreenRecorder : https://launchpad.net/~maarten-baert/+archive/ubuntu/simplescreenrecorder
+    sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
 
     echo "Updating package lists ..."
     sudo apt-get update -qq
