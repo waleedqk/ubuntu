@@ -30,8 +30,9 @@ APP3_LIST=(
 
 main()
 {
-	apt_update
+	pip_update
 	clear
+
 
 	echo "Installing apps now ..."
 	sudo apt-get -y install "${APP3_LIST[@]}"
@@ -41,13 +42,14 @@ main()
 
 }
 
-apt_update()
+pip_update()
 {
 	echo "update..."
 	apt-get update
 	clear
-	echo "update pip3..."
+	echo "update pip..."
 	sudo -H pip3 install --upgrade pip
+	sudo -H pip2 install --upgrade pip
 }
 
 
