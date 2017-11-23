@@ -35,6 +35,7 @@ APP_LIST=(
     gcc
     gimp
     git
+    git-cola
     gitk
     gksu
     gnome-icon-theme-full
