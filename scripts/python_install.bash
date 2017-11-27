@@ -15,6 +15,7 @@ PIP3_LIST=(
 	Jinja2
 	matplotlib
 	numpy
+    pyshark
 	redis
 	scipy
 	sympy
