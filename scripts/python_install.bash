@@ -19,6 +19,7 @@ PIP3_LIST=(
 	redis
 	scipy
 	sympy
+	virtualenv
 )
 
 APP3_LIST=(
