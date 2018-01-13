@@ -50,6 +50,7 @@ APP_LIST=(
     inkscape
     lxappearance
     mc
+	megatools
     minecraft-installer
     moka-icon-theme faba-icon-theme faba-mono-icons
     netcat
