@@ -17,6 +17,7 @@ PIP3_LIST=(
 	jupyter
 	matplotlib
 	numpy
+	pandas
     pyshark
 	redis
 	scipy
