@@ -12,7 +12,9 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 PIP3_LIST=(
 	beautifulsoup4
 	GitPython
+	html5lib
 	Jinja2
+	jupyter
 	matplotlib
 	numpy
     pyshark
@@ -30,6 +32,22 @@ APP3_LIST=(
 	python3-tk
 )
 
+pip_update()
+{
+	echo "update..."
+	apt-get update
+	clear
+	echo "update pip..."
+	sudo -H pip3 install --upgrade pip
+	sudo -H pip2 install --upgrade pip
+}
+
+upgrade_modules()
+{
+	echo "Upgrading modules ..."
+	sudo pip3 install --upgrade "${PIP3_LIST[@]}"
+}
+
 main()
 {
 	pip_update
@@ -42,17 +60,7 @@ main()
 	echo "Installing pip3 apps"	
 	sudo -H pip3 install "${PIP3_LIST[@]}"
 
+	upgrade_modules
 }
-
-pip_update()
-{
-	echo "update..."
-	apt-get update
-	clear
-	echo "update pip..."
-	sudo -H pip3 install --upgrade pip
-	sudo -H pip2 install --upgrade pip
-}
-
 
 main
