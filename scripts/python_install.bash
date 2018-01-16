@@ -11,13 +11,16 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 # PIP3 LIST
 PIP3_LIST=(
 	beautifulsoup4
+	Color
 	GitPython
+	gtabview
 	html5lib
 	Jinja2
 	jupyter
 	matplotlib
 	numpy
 	pandas
+	psycopg2
     pyshark
 	redis
 	scipy
