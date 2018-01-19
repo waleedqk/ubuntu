@@ -6,11 +6,11 @@
 
 **Switch session**
 
-    tmux switch -t<session id>
+    tmux switch -t <session id>
 
 **Kill session**
 
-    tmux kill-session -t<session id>
+    tmux kill-session -t <session id>
 
 
 **Kill all detached sessions**
