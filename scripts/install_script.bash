@@ -12,6 +12,7 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 APP_LIST=(
     arandr
     arc-theme
+    arp-scan
     atom
     build-essential
     cifs-utils
