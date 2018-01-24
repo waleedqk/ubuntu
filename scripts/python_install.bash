@@ -20,6 +20,7 @@ PIP3_LIST=(
 	matplotlib
 	numpy
 	pandas
+	plotly
 	psycopg2
     pyshark
 	redis
