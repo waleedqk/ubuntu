@@ -12,6 +12,7 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 PIP3_LIST=(
 	beautifulsoup4
 	color
+	dplython
 	GitPython
 	gtabview
 	html5lib
