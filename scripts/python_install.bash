@@ -22,6 +22,7 @@ PIP3_LIST=(
 	numpy
 	pandas
 	plotly
+	preprocessing
 	psycopg2
     pyshark
 	redis
