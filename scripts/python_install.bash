@@ -27,6 +27,7 @@ PIP3_LIST=(
     pyshark
 	redis
 	scipy
+	scikit-learn
 	sympy
 	virtualenv
 )
