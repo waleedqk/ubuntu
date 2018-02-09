@@ -49,6 +49,7 @@ APP_LIST=(
     i3
     i3blocks
     inkscape
+    kicad
     lxappearance
     mc
 	megatools
@@ -208,6 +209,9 @@ add_16_ppa()
 
     # SimpleScreenRecorder : https://launchpad.net/~maarten-baert/+archive/ubuntu/simplescreenrecorder
     sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
+
+    # kicad pcb design http://kicad-pcb.org/download/ubuntu/
+    sudo add-apt-repository --yes ppa:js-reynaud/kicad-4
 
     echo "Updating package lists ..."
     sudo apt-get update -qq
