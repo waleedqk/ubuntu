@@ -29,6 +29,7 @@ PIP3_LIST=(
 	scipy
 	scikit-learn
 	sympy
+	unicodecsv
 	virtualenv
 )
 
