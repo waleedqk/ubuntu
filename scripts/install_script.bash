@@ -11,7 +11,7 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04
 # APP LIST
 APP_LIST=(
     arandr
-    arc-theme
+    # arc-theme
     arp-scan
     atom
     build-essential
@@ -30,8 +30,8 @@ APP_LIST=(
     exfat-utils
     expect
     feh
-    fontconfig-infinality
-    fonts-font-awesome
+    # fontconfig-infinality
+    # fonts-font-awesome
     g++
     gcc
     gimp
@@ -46,15 +46,16 @@ APP_LIST=(
     handbrake-gtk
     handbrake-cli
     htop
-    i3
-    i3blocks
+    # i3
+    # i3blocks
+    imagemagick
     inkscape
     kicad
     lxappearance
     mc
 	megatools
     minecraft-installer
-    moka-icon-theme faba-icon-theme faba-mono-icons
+    # moka-icon-theme faba-icon-theme faba-mono-icons
     netcat
     nmap
     npm
@@ -64,10 +65,11 @@ APP_LIST=(
     openvpn
     packeth
     pavucontrol
+    pdfshuffler
     pinta
     python-pip
     python3-pip
-    rofi
+    # rofi
     screen
     shutter
     simplescreenrecorder simplescreenrecorder-lib
@@ -195,17 +197,17 @@ add_16_ppa()
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
     echo 'deb http://repository.spotify.com stable non-free' | sudo tee /etc/apt/sources.list.d/spotify.list
 
-    # Infinality (font renderer) http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
-    sudo add-apt-repository ppa:no1wantdthisname/ppa -y
+    # # Infinality (font renderer) http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
+    # sudo add-apt-repository ppa:no1wantdthisname/ppa -y
 
-    # Arc Dark theme
-    wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
-    sudo apt-key add - < Release.key
-    sudo apt-get update
-    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
+    # # Arc Dark theme
+    # wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
+    # sudo apt-key add - < Release.key
+    # sudo apt-get update
+    # sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
 
-    # Moka icon
-    sudo add-apt-repository ppa:moka/daily -y
+    # # Moka icon
+    # sudo add-apt-repository ppa:moka/daily -y
 
     # SimpleScreenRecorder : https://launchpad.net/~maarten-baert/+archive/ubuntu/simplescreenrecorder
     sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
