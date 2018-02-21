@@ -50,6 +50,7 @@ APP_LIST=(
     # i3blocks
     imagemagick
     inkscape
+    keepass2
     kicad
     lxappearance
     mc
