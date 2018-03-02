@@ -77,6 +77,7 @@ APP_LIST=(
     spotify-client
     sqlite3
     ssh
+    sshfs
     steam
     synaptic
     syncthing
