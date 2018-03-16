@@ -28,6 +28,7 @@ PIP3_LIST=(
 	redis
 	scipy
 	scikit-learn
+	seaborn
 	sympy
 	unicodecsv
 	virtualenv
