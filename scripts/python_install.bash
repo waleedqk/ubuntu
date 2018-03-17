@@ -24,6 +24,7 @@ PIP3_LIST=(
 	plotly
 	preprocessing
 	psycopg2
+	pydotplus
     pyshark
 	redis
 	scipy
