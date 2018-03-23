@@ -31,6 +31,7 @@ PIP3_LIST=(
 	scikit-learn
 	seaborn
 	sympy
+	tensorflow
 	unicodecsv
 	virtualenv
 )
