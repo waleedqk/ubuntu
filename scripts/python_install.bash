@@ -19,6 +19,7 @@ PIP3_LIST=(
 	Jinja2
 	jupyter
 	matplotlib
+	ntlk
 	numpy
 	pandas
 	plotly
