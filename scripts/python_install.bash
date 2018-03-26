@@ -26,6 +26,7 @@ PIP3_LIST=(
 	psycopg2
 	pydotplus
     pyshark
+	quandl
 	redis
 	scipy
 	scikit-learn
