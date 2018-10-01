@@ -5,64 +5,41 @@ set -e
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
-UBUNTU_CODENAME=$(lsb_release -s -c)	#Xenial
-UBUNTU_VERSION=$(lsb_release -rs)	#16.04
+UBUNTU_CODENAME=$(lsb_release -s -c)	#Xenial bionic
+UBUNTU_VERSION=$(lsb_release -rs)	#16.04 18.04
+
+MYHOME="/home/${SUDO_USER}"
 
 # APP LIST
 APP_LIST=(
-    arandr
-    # arc-theme
-    arp-scan
-    atom
+    arp-scan # local network scan
     build-essential
     cifs-utils
-    clang
-    clang-format
+    clang clang-format
     cmake
-    cmus
-    compton
+    cmus # A Console Based Audio Player for Linux
     cron
-    dconf-editor
-    dkms
-    docker-ce
+    curl
+    # dkms
     espeak
-    exfat-fuse
-    exfat-utils
+    exfat-fuse exfat-utils
     expect
-    feh
-    # fontconfig-infinality
-    # fonts-font-awesome
-    g++
-    gcc
+    g++ gcc
     gimp
     git
-    git-cola
-    gitk
-    gksu
-    gnome-icon-theme-full
     gparted
     gpsprune
     gzip
-    handbrake-gtk
-    handbrake-cli
+    handbrake-gtk handbrake-cli
     htop
-    # i3
-    # i3blocks
     imagemagick
     inkscape
     keepass2
-    kicad
-    lxappearance
-    mc
-	megatools
-    minecraft-installer
-    # moka-icon-theme faba-icon-theme faba-mono-icons
     netcat
     nmap
     npm
     ntp
-    openssh-client
-    openssh-server
+    openssh-client openssh-server
     openvpn
     packeth
     pavucontrol
@@ -70,11 +47,9 @@ APP_LIST=(
     pinta
     python-pip
     python3-pip
-    # rofi
     screen
-    shutter
+    # shutter
     simplescreenrecorder simplescreenrecorder-lib
-    spotify-client
     sqlite3
     ssh
     sshfs
@@ -82,11 +57,8 @@ APP_LIST=(
     synaptic
     syncthing
     tcpdump
-    #terminator
     telnet
-    texlive-full
-    texstudio
-    thunar
+    texlive-full texstudio
     tree
     tmux
     ubuntu-restricted-extras
@@ -95,175 +67,106 @@ APP_LIST=(
     vlc
     wireshark
     xclip
-    #xrandr
     youtube-dl
 )
 
-# This list is specifically for plugin packages for the Atom text editor
-ATOM_PACKAGES=(
-    atom-beautify
-    autocomplete-clang
-    busy-signal
-    clang-format
-	git-diff
-    git-time-machine
-    highlight-selected
-    intentions
-    linter
-    linter-ui-default
-    linter-clang
-    linter-shellcheck
-    linter-cpplint
-    language-lua
-    language-cmake
-    markdown-pdf
-    minimap
-	minimap-git-diff
-    minimap-highlight-selected
-    pigments
-    remote-edit
-)
+OPTS=`getopt -o cnth --long config,new-install,test,help -n 'parse-options' -- "$@"`
 
+usage() { echo "Error - Usage: $0 [-c || --config] [-n || --new-install] [-t || --test] [-h || --help]" 1>&2; exit 1; }
+
+
+if [ $? != 0 ] ; then echo "Failed parsing options." usage >&2 ; exit 1 ; fi
+
+echo "$OPTS"
+eval set -- "$OPTS"
+
+while true; do
+  case "$1" in
+    -c | --config )         CONFIG=true;        shift ;;
+    -n | --new-install )    NEW_INSTALL=true;   shift ;;
+    -t | --test )           TEST=true;          shift ;;
+    -h | --help )           HELP=true;          shift ;;
+    -- ) shift; break ;;
+    * ) break ;;
+  esac
+done
+
+# echo "CONFIG = ${CONFIG}"
+# echo "NEW_INSTALL = ${NEW_INSTALL}"
+# echo "TEST = ${TEST}"
+# echo "HELP = ${HELP}"
+
+# Update the system
 apt_update()
 {
-    echo "update..."
-    apt-get update
+    echo "Update list of available packages"
+    apt update
 }
 
-main_16()
+bionic_install()
 {
-    apt_update
-    clear
-
-    if [[ -z $1 ]]; then
-        echo "No command provided"
+    if [ ! -z "${NEW_INSTALL}" ]; then
+        echo "Initializing a fresh install" 
+        remove_stuff
+        add_ppa
         install_app
-    else
-        case "$1" in
-            "install")
-                install_app
-                ;;
-            "ppa")
-                add_16_ppa
-                install_app
-                ;;
-            "all")
-                remove_stuff
-                add_16_ppa
-                install_app
-                install_gchrome
-                configure_16
-                git_config
-                setup_vim
-                update_config
-                # for atom-beautify
-                pip install beautysh
-                pip3 install beautysh
-                install_atom_packages "${ATOM_PACKAGES[@]}"
-                ;;
-        esac
+        # install_gchrome
+        install_spotify
+        install_docker
+        # install_minecraft
+        install_kicad
     fi
-    #install_ros
+
+    if [ ! -z "${CONFIG}" ]; then
+        wireshark_config
+        git_config
+        vim_config
+        tmux_config
+    fi
+
+    if [ ! -z "${TEST}" ]; then
+        echo "Initializing test" 
+        install_docker
+    fi
 }
 
-add_16_ppa()
+remove_stuff()
+{
+    # Remove unused folders
+    echo "Removing unwanted directories"
+    rm -rf $MYHOME/Templates
+    rm -rf $MYHOME/Examples
+}
+
+add_ppa()
 {
     echo "Adding PPAs"
 
     sudo add-apt-repository "deb http://archive.canonical.com/ubuntu $(lsb_release -sc) partner"
 
-    # terminator terminal
-    #add-apt-repository ppa:gnome-terminator/ppa -y
-
     # open source video transcoder
     sudo add-apt-repository ppa:stebbins/handbrake-releases -y
 
     # shutter
-    sudo add-apt-repository ppa:shutter/ppa
-
-    # minecraft
-    sudo add-apt-repository -y ppa:minecraft-installer-peeps/minecraft-installer
-
-    # atom
-    sudo add-apt-repository -y ppa:webupd8team/atom
+    # sudo add-apt-repository ppa:shutter/ppa
 
     # Syncthing
     curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
     echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 
-    # Docker
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-    # Spotify
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-    echo 'deb http://repository.spotify.com stable non-free' | sudo tee /etc/apt/sources.list.d/spotify.list
-
-    # # Infinality (font renderer) http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
-    # sudo add-apt-repository ppa:no1wantdthisname/ppa -y
-
-    # # Arc Dark theme
-    # wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
-    # sudo apt-key add - < Release.key
-    # sudo apt-get update
-    # sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
-
-    # # Moka icon
-    # sudo add-apt-repository ppa:moka/daily -y
 
     # SimpleScreenRecorder : https://launchpad.net/~maarten-baert/+archive/ubuntu/simplescreenrecorder
     sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
 
-    # kicad pcb design http://kicad-pcb.org/download/ubuntu/
-    sudo add-apt-repository --yes ppa:js-reynaud/kicad-4
-
     echo "Updating package lists ..."
-    sudo apt-get update -qq
+    sudo apt update -qq
 
 }
 
 install_app()
 {
     echo "Installing apps now ..."
-    sudo apt-get -y install "${APP_LIST[@]}"
-}
-
-remove_stuff()
-{
-    # Remove unused folders
-    rm -rf ~/Templates
-    rm -rf ~/Examples
-}
-
-setup_vim()
-{
-    BUNDLE="$HOME/.vim/bundle"
-    if [ ! -d "$BUNDLE/Vundle.vim" ]; then
-        mkdir -p "$BUNDLE"
-        git clone https://github.com/VundleVim/Vundle.vim.git "$BUNDLE/Vundle.vim"
-    fi
-
-    # Update existing (or new) installation
-    cd "$BUNDLE/Vundle.vim"
-    git pull -q
-    # In order to update Vundle.vim and all your plugins directly from the command line you can use a command like this:
-    vim -c VundleInstall -c quitall
-
-    echo "Vim setup updated."
-}
-
-git_config() {
-    git config --global user.name "Waleed Khan"
-    git config --global user.email "wqkhan@uwaterloo.ca"
-    #git config --global push.default matching
-}
-
-configure_16()
-{
-    echo "Give user privelages for wireshark"
-    sudo dpkg-reconfigure wireshark-common
-    echo "a wireshark group been created in /etc/gshadow. so add user to it"
-    sudo gpasswd -a $USER wireshark
+    sudo apt -y install "${APP_LIST[@]}"
 }
 
 install_gchrome()
@@ -274,69 +177,147 @@ install_gchrome()
     sudo apt-get install google-chrome-stable -y
 }
 
-update_config()
+install_spotify()
 {
-    if [ -f $HOME"/.vimrc" ] ; then
-        rm $HOME"/.vimrc"
-    fi
-    cp $REPO_DIR"/config/vim/vimrc" $HOME"/.vimrc"
+    # Add the Spotify repository signing keys to be able to verify downloaded packages
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 
-    if [ -f $HOME"/.tmux.conf" ] ; then
-        rm $HOME"/.tmux.conf"
-    fi
-    cp $REPO_DIR"/config/tmux/tmux.conf" $HOME"/.tmux.conf"
+    # Add the Spotify repository
+    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+    
+    # update package listing
+    sudo apt update
+
+    # Install Spotify
+    sudo apt -y install spotify-client
 }
 
-install_atom_packages()
+install_minecraft()
 {
-    ARRAY=("$@")
-    for atmpkg in "${ARRAY[@]}"; do
-        if [[ ! -d "$HOME/.atom/packages/$atmpkg" ]]; then
-            apm install "$atmpkg"
-        else
-            echo "atom package $atmpkg is already installed"
-        fi
-    done
+    # minecraft
+    sudo add-apt-repository -y ppa:minecraft-installer-peeps/minecraft-installer
+    # update package listing
+    sudo apt update
+    sudo apt -y install minecraft-installer
 }
 
-install_ros()
+install_kicad()
 {
-    UBUNTU_CODENAME=$(lsb_release -s -c)
+    # kicad pcb design http://kicad-pcb.org/download/ubuntu/
+    sudo add-apt-repository --yes ppa:js-reynaud/kicad-4
+    # update package listing
+    sudo apt update
+    sudo apt -y install kicad
+}
+
+install_docker()
+{
+    # Uninstall old versions
+    sudo apt-get remove docker docker-engine docker.io
+
+    # Install using the repository
+    sudo apt update
+
+    # Install packages to allow apt to use a repository over HTTPS:
+    sudo apt -y install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common
+
+    # Add Docker’s official GPG key:
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+    # verify fingerprint
+    sudo apt-key fingerprint 0EBFCD88
+
+    # set up the stable repository
+    sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+
+    # INSTALL DOCKER CE
+    sudo apt update
+    sudo apt -y install docker-ce
+    # sudo apt-get install docker-ce=<VERSION>
+
+    # add current user to docker group
+    sudo usermod -aG docker $SUDO_USER
+
+    # test docker ce is installed correctly 
+    sudo docker run hello-world
+}
+
+wireshark_config()
+{
+    echo "Give user privelages for wireshark"
+    sudo dpkg-reconfigure wireshark-common
+    echo "a wireshark group been created in /etc/gshadow. so add user to it"
+    sudo gpasswd -a $SUDO_USER wireshark
+}
+
+git_config() {
+    sudo -u ${SUDO_USER} git config --global user.name "Waleed Khan"
+    sudo -u ${SUDO_USER} git config --global user.email "wqkhan@uwaterloo.ca"
+    #git config --global push.default matching
+}
+
+vim_config()
+{
+    BUNDLE="$MYHOME/.vim/bundle"
+    if [ ! -d "$BUNDLE/Vundle.vim" ]; then
+        sudo -u ${SUDO_USER} mkdir -p "$BUNDLE"
+        sudo -u ${SUDO_USER} git clone https://github.com/VundleVim/Vundle.vim.git "$BUNDLE/Vundle.vim"
+    fi
+
+    # Update existing (or new) installation
+    cd "$BUNDLE/Vundle.vim"
+    sudo -u ${SUDO_USER} git pull -q
+    # In order to update Vundle.vim and all your plugins directly from the command line you can use a command like this:
+    sudo -u ${SUDO_USER} vim -c VundleInstall -c quitall
+
+    echo "Vim setup updated."
+
+    if [ -f $MYHOME"/.vimrc" ] ; then
+        rm $MYHOME"/.vimrc"
+    fi
+    sudo -u ${SUDO_USER} cp $REPO_DIR"/config/vim/vimrc" $MYHOME"/.vimrc"
+}
+
+tmux_config()
+{
+
+    if [ -f $MYHOME"/.tmux.conf" ] ; then
+        rm $MYHOME"/.tmux.conf"
+    fi
+    sudo -u ${SUDO_USER} cp $REPO_DIR"/config/tmux/tmux.conf" $MYHOME"/.tmux.conf"
+}
+
+main()
+{
+    echo "System is running: ${UBUNTU_CODENAME} ${UBUNTU_VERSION}"
+
+    # -z string True if the string is null (an empty string)
+    if [ ! -z "${HELP}" ]; then
+        echo "Requesting help: "
+        usage
+    fi
+
+    apt_update
+    clear
+
     case $UBUNTU_CODENAME in
         trusty)
-            ROS_DISTRO=indigo ;;
+            main_14 ;;
         xenial)
-            ROS_DISTRO=kinetic ;;
+            (main_16 "$@") ;;
+        bionic)
+            bionic_install ;;
         *)
-            echo "Unsupported version of Ubuntu detected. Only trusty (14.04.*) and xenial (16.04.*) are currently supported."
-            exit 1
+            echo "Unsupported version of Ubuntu detected. Only bionic (18.04.*) are currently supported."
+            exit 1 ;;
     esac
-
-    sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $UBUNTU_CODENAME main\" > /etc/apt/sources.list.d/ros-latest.list"
-    wget -qO - http://packages.ros.org/ros.key | sudo apt-key add -
-
-    echo "Updating package lists ..."
-    sudo apt-get -qq update
-
-    echo "Installing ROS $ROS_DISTRO ..."
-    sudo apt-get -qq install ros-$ROS_DISTRO-desktop python-rosinstall > /dev/null
-
-    source /opt/ros/$ROS_DISTRO/setup.bash
-
-    # Prepare rosdep to install dependencies.
-    echo "Updating rosdep ..."
-    if [ ! -d /etc/ros/rosdep ]; then
-        sudo rosdep init > /dev/null
-    fi
-    rosdep update > /dev/null
 }
 
-case $UBUNTU_CODENAME in
-    trusty)
-        main_14 ;;
-    xenial)
-        (main_16 "$@") ;;
-    *)
-        echo "Unsupported version of Ubuntu detected. Only trusty (14.04.*) and xenial (16.04.*) are currently supported."
-        exit 1 ;;
-esac
+main
