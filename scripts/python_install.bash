@@ -5,8 +5,8 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
-UBUNTU_CODENAME=$(lsb_release -s -c)	#Xenial
-UBUNTU_VERSION=$(lsb_release -rs)	#16.04
+UBUNTU_CODENAME=$(lsb_release -s -c)	#bionic
+UBUNTU_VERSION=$(lsb_release -rs)	#18.04
 
 # PIP3 LIST
 PIP3_LIST=(
