@@ -19,6 +19,9 @@ define_aliases()
 	alias gitc='git commit -m'
 	alias gitp='git pull'
 
+	# python
+	alias python=python3
+	
 	# ROS
 	alias cws='cd ~/catkin_ws'
 	alias catb='(cd ~/catkin_ws && catkin build)'
