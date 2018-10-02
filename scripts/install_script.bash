@@ -20,6 +20,7 @@ APP_LIST=(
     cmus # A Console Based Audio Player for Linux
     cron
     curl
+    default-jdk
     # dkms
     espeak
     exfat-fuse exfat-utils
