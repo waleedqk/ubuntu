@@ -262,6 +262,13 @@ install_kicad()
     sudo apt -y install kicad
 }
 
+install_avr()
+{
+    sudo apt update
+    sudo apt -y install gcc-avr avr-libc
+    sudo apt -y install avrdude
+}
+
 install_docker()
 {
     # Uninstall old versions
