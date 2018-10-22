@@ -127,7 +127,7 @@ bionic_install()
 
     if [ ! -z "${TEST}" ]; then
         echo "Initializing test" 
-	git_config
+	    install_avr
         # install_spotify
         # install_gchrome
         # install_minecraft
