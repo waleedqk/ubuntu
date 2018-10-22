@@ -36,6 +36,7 @@ APP_LIST=(
     imagemagick
     inkscape
     keepass2
+    make
     netcat
     nmap
     npm
@@ -110,24 +111,28 @@ bionic_install()
         echo "Initializing a fresh install" 
         remove_stuff
         add_ppa
-        install_app
-        # install_gchrome
-        install_spotify
-        install_docker
-        # install_minecraft
-        install_kicad
-    fi
-
-    if [ ! -z "${CONFIG}" ]; then
-        wireshark_config
+        install_app       
         git_config
         vim_config
         tmux_config
+        wireshark_config
+    fi
+
+    if [ ! -z "${CONFIG}" ]; then    
+        git_config
+        vim_config
+        tmux_config
+        wireshark_config
     fi
 
     if [ ! -z "${TEST}" ]; then
         echo "Initializing test" 
-        install_docker
+	git_config
+        # install_spotify
+        # install_gchrome
+        # install_minecraft
+        # install_kicad
+        # install_docker
     fi
 }
 
@@ -168,6 +173,52 @@ install_app()
 {
     echo "Installing apps now ..."
     sudo apt -y install "${APP_LIST[@]}"
+}
+
+git_config() {
+    echo "Setting up git configuration ..."
+    sudo -u ${SUDO_USER} git config --global user.name "Waleed Khan"
+    sudo -u ${SUDO_USER} git config --global user.email "wqkhan@uwaterloo.ca"
+    #git config --global push.default matching
+}
+
+vim_config()
+{
+    BUNDLE="$MYHOME/.vim/bundle"
+    if [ ! -d "$BUNDLE/Vundle.vim" ]; then
+        sudo -u ${SUDO_USER} mkdir -p "$BUNDLE"
+        sudo -u ${SUDO_USER} git clone https://github.com/VundleVim/Vundle.vim.git "$BUNDLE/Vundle.vim"
+    fi
+
+    # Update existing (or new) installation
+    cd "$BUNDLE/Vundle.vim"
+    sudo -u ${SUDO_USER} git pull -q
+    # In order to update Vundle.vim and all your plugins directly from the command line you can use a command like this:
+    sudo -u ${SUDO_USER} vim -c VundleInstall -c quitall
+
+    echo "Vim setup updated."
+
+    if [ -f $MYHOME"/.vimrc" ] ; then
+        rm $MYHOME"/.vimrc"
+    fi
+    sudo -u ${SUDO_USER} cp $REPO_DIR"/config/vim/vimrc" $MYHOME"/.vimrc"
+}
+
+tmux_config()
+{
+
+    if [ -f $MYHOME"/.tmux.conf" ] ; then
+        rm $MYHOME"/.tmux.conf"
+    fi
+    sudo -u ${SUDO_USER} cp $REPO_DIR"/config/tmux/tmux.conf" $MYHOME"/.tmux.conf"
+}
+
+wireshark_config()
+{
+    echo "Give user privelages for wireshark"
+    sudo dpkg-reconfigure wireshark-common
+    echo "a wireshark group been created in /etc/gshadow. so add user to it"
+    sudo gpasswd -a $SUDO_USER wireshark
 }
 
 install_gchrome()
@@ -248,52 +299,13 @@ install_docker()
 
     # test docker ce is installed correctly 
     sudo docker run hello-world
+
+    ## SYSTEMD
+    # sudo systemctl enable docker
+    # sudo systemctl disable docker
+
 }
 
-wireshark_config()
-{
-    echo "Give user privelages for wireshark"
-    sudo dpkg-reconfigure wireshark-common
-    echo "a wireshark group been created in /etc/gshadow. so add user to it"
-    sudo gpasswd -a $SUDO_USER wireshark
-}
-
-git_config() {
-    sudo -u ${SUDO_USER} git config --global user.name "Waleed Khan"
-    sudo -u ${SUDO_USER} git config --global user.email "wqkhan@uwaterloo.ca"
-    #git config --global push.default matching
-}
-
-vim_config()
-{
-    BUNDLE="$MYHOME/.vim/bundle"
-    if [ ! -d "$BUNDLE/Vundle.vim" ]; then
-        sudo -u ${SUDO_USER} mkdir -p "$BUNDLE"
-        sudo -u ${SUDO_USER} git clone https://github.com/VundleVim/Vundle.vim.git "$BUNDLE/Vundle.vim"
-    fi
-
-    # Update existing (or new) installation
-    cd "$BUNDLE/Vundle.vim"
-    sudo -u ${SUDO_USER} git pull -q
-    # In order to update Vundle.vim and all your plugins directly from the command line you can use a command like this:
-    sudo -u ${SUDO_USER} vim -c VundleInstall -c quitall
-
-    echo "Vim setup updated."
-
-    if [ -f $MYHOME"/.vimrc" ] ; then
-        rm $MYHOME"/.vimrc"
-    fi
-    sudo -u ${SUDO_USER} cp $REPO_DIR"/config/vim/vimrc" $MYHOME"/.vimrc"
-}
-
-tmux_config()
-{
-
-    if [ -f $MYHOME"/.tmux.conf" ] ; then
-        rm $MYHOME"/.tmux.conf"
-    fi
-    sudo -u ${SUDO_USER} cp $REPO_DIR"/config/tmux/tmux.conf" $MYHOME"/.tmux.conf"
-}
 
 main()
 {
