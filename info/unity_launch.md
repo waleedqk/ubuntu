@@ -1,23 +1,7 @@
-### Create a .desktop  file for the application ###
-touch ~/.local/share/applications/opt_eclipse.desktop
-chmod +x ~/.local/share/applications/opt_eclipse.desktop
-nano ~/.local/share/applications/opt_eclipse.desktop
+## Create Desktop Application launcher
 
-### Enter the following in the file
-[Desktop Entry]
-Type=Application
-Version=4.6.2
-Name=Eclipse
-Comment=Eclipse Integrated Development Environment
-Icon=** something like /opt/eclipse/icon.xpm **
-Exec= ** something like /opt/eclipse/eclipse **
-Terminal=false
-Categories=Development;IDE;Java;
-
-
-### Create a .desktop  file for the application ###
-cd ~/usr/share/applications/
-sudo vim pycharm.desktop
+save it to ```home/<user>/.local/share/applications/appname.desktop``` for a launcher tied to your own login
+or to ```/usr/share/applications/appname.desktop``` if you want it to apply to other users of your system
 
 ### Enter the following in the file
 [Desktop Entry]

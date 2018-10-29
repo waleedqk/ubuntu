@@ -12,5 +12,3 @@ Terminal=false
 StartupWMClass=jetbrains-pycharm
 
 
-save it to ```home/yourname/.local/share/applications/appname.desktop``` for a launcher tied to your own login
-or to ```/usr/share/applications/appname.desktop``` if you want it to apply to other users of your system
