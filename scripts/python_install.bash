@@ -22,7 +22,7 @@ PIP3_LIST=(
 	nltk
 	numpy
 	pandas
-	plotly
+	plotly psutil
 	preprocessing
 	psycopg2
 	pydotplus
