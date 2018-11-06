@@ -23,6 +23,7 @@ PIP3_LIST=(
 	numpy
 	pandas
 	plotly psutil
+	plotnine          # https://github.com/has2k1/plotnine
 	preprocessing
 	psycopg2
 	pydotplus
