@@ -109,7 +109,7 @@ bionic_install()
 {
     if [ ! -z "${NEW_INSTALL}" ]; then
         echo "Initializing a fresh install" 
-        remove_stuff
+        directory_make
         add_ppa
         install_app       
         git_config
@@ -136,12 +136,15 @@ bionic_install()
     fi
 }
 
-remove_stuff()
+directory_make()
 {
     # Remove unused folders
     echo "Removing unwanted directories"
     rm -rf $MYHOME/Templates
     rm -rf $MYHOME/Examples
+
+    echo "Creating needed directories"
+    sudo -u ${SUDO_USER} mkdir -p $MYHOME/mnt
 }
 
 add_ppa()
