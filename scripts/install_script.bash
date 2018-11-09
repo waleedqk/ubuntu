@@ -128,6 +128,7 @@ bionic_install()
     if [ ! -z "${TEST}" ]; then
         echo "Initializing test" 
 	    install_avr
+        install_octave
         # install_spotify
         # install_gchrome
         # install_minecraft
@@ -270,6 +271,13 @@ install_avr()
     sudo apt update
     sudo apt -y install gcc-avr avr-libc
     sudo apt -y install avrdude
+}
+
+install_octave()
+{
+    sudo apt update
+    sudo apt -y install octave liboctave-dev
+    # pkg install -forge control signal
 }
 
 install_docker()
