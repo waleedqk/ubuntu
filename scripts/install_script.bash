@@ -284,11 +284,11 @@ install_AptanaStudio3()
     sudo -u ${SUDO_USER} unzip $MYHOME/Documents/installs/aptana.studio-linux.gtk.x86_64.zip -d $MYHOME/Documents/installs/AptanaStudio3
 
     # Set owner permission as root
-    chown -R root:root $MYHOME/Documents/installs/Aptana_Studio_3/
+    chown -R root:root $MYHOME/Documents/installs/AptanaStudio3/
     # set execute permission to Aptana_Studio_3 directory
-    chmod -R 777 $MYHOME/Documents/installs/Aptana_Studio_3
+    sudo chmod -R 777 $MYHOME/Documents/installs/AptanaStudio3
 
-    sudo ln -s $MYHOME/Documents/installs/Aptana_Studio_3/AptanaStudio3 /usr/local/bin/AptanaStudio3
+    sudo ln -sf $MYHOME/Documents/installs/AptanaStudio3/AptanaStudio3 /usr/local/bin/AptanaStudio3
 
 }
 
