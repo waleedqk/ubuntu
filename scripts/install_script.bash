@@ -25,6 +25,7 @@ APP_LIST=(
     espeak
     exfat-fuse exfat-utils
     expect
+    filezilla
     g++ gcc
     gimp
     git
