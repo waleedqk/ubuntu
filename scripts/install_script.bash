@@ -127,7 +127,7 @@ bionic_install()
 
     if [ ! -z "${TEST}" ]; then
         echo "Initializing test" 
-        install_AptanaStudio3
+        # install_AptanaStudio3
 	    # install_avr
         # install_octave
         # install_spotify
