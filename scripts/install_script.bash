@@ -127,8 +127,9 @@ bionic_install()
 
     if [ ! -z "${TEST}" ]; then
         echo "Initializing test" 
-	    install_avr
-        install_octave
+        install_AptanaStudio3
+	    # install_avr
+        # install_octave
         # install_spotify
         # install_gchrome
         # install_minecraft
@@ -146,6 +147,7 @@ directory_make()
 
     echo "Creating needed directories"
     sudo -u ${SUDO_USER} mkdir -p $MYHOME/mnt
+    sudo -u ${SUDO_USER} mkdir -p $MYHOME/Documents/installs
 }
 
 add_ppa()
@@ -266,6 +268,30 @@ install_kicad()
     sudo apt -y install kicad
 }
 
+install_AptanaStudio3()
+{
+    # add java repo file 
+    # sudo add-apt-repository ppa:webupd8team/java
+    # sudo apt update
+    # sudo apt install oracle-java7-installer
+
+    # install dependency files for aptana studio.
+    sudo apt install libjpeg62 libwebkitgtk-1.0-0 git-core
+
+    # get aptana studio
+    sudo -u ${SUDO_USER} mkdir -p $MYHOME/Documents/installs/AptanaStudio3
+    cd $MYHOME/Documents/installs/ && sudo -u ${SUDO_USER} wget https://github.com/aptana/studio3/releases/download/3.7.2.201807301111/aptana.studio-linux.gtk.x86_64.zip
+    sudo -u ${SUDO_USER} unzip $MYHOME/Documents/installs/aptana.studio-linux.gtk.x86_64.zip -d $MYHOME/Documents/installs/AptanaStudio3
+
+    # Set owner permission as root
+    chown -R root:root $MYHOME/Documents/installs/Aptana_Studio_3/
+    # set execute permission to Aptana_Studio_3 directory
+    chmod -R 777 $MYHOME/Documents/installs/Aptana_Studio_3
+
+    sudo ln -s $MYHOME/Documents/installs/Aptana_Studio_3/AptanaStudio3 /usr/local/bin/AptanaStudio3
+
+}
+
 install_avr()
 {
     sudo apt update
@@ -339,14 +365,11 @@ main()
     clear
 
     case $UBUNTU_CODENAME in
-        trusty)
-            main_14 ;;
-        xenial)
-            (main_16 "$@") ;;
         bionic)
             bionic_install ;;
         *)
             echo "Unsupported version of Ubuntu detected. Only bionic (18.04.*) are currently supported."
+            bionic_install
             exit 1 ;;
     esac
 }
