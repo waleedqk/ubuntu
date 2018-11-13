@@ -271,9 +271,9 @@ install_kicad()
 install_AptanaStudio3()
 {
     # add java repo file 
-    # sudo add-apt-repository ppa:webupd8team/java
-    # sudo apt update
-    # sudo apt install oracle-java7-installer
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt update
+    sudo apt install oracle-java7-installer
 
     # install dependency files for aptana studio.
     sudo apt install libjpeg62 libwebkitgtk-1.0-0 git-core
