@@ -8,7 +8,7 @@ To get started run the following commands:
 
     mkdir -p ~/.ssh
     touch ~/.ssh/config
-    if [ ! -e ~/.ssh/config ] ; then touch ~/.ssh/config else echo 0; fi
+    if [ ! -e ~/.ssh/config ] ; then touch ~/.ssh/config; else echo 0; fi
 
 ## Add Alias for Host
 
