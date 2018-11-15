@@ -269,6 +269,26 @@ install_kicad()
     sudo apt -y install kicad
 }
 
+install_Apache()
+{
+    sudo apt update
+    sudo apt install apache2
+
+    sudo ufw app list
+    sudo ufw allow 'Apache'
+    sudo ufw status
+
+    sudo apt-get install mysql-server mysql-client php7.0 libapache2-mod-php7.0 php7.0-mysql php7.0-mcrypt php7.0-cli php7.0-curl phpmyadmin php-mbstring php-gettext
+
+    #  enable the PHP mcrypt and mbstring extensions
+    sudo phpenmod mcrypt
+    sudo phpenmod mbstring
+
+    sudo systemctl restart apache2
+    # https://domain_name_or_IP/phpmyadmin
+
+}
+
 install_AptanaStudio3()
 {
     # add java repo file 
