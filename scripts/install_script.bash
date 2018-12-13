@@ -114,7 +114,7 @@ bionic_install()
     if [ ! -z "${NEW_INSTALL}" ]; then
         echo "Initializing a fresh install" 
 	basic_utility
-        directory_make
+	directory_make
         add_ppa
         install_app       
         git_config
@@ -133,7 +133,8 @@ bionic_install()
     if [ ! -z "${TEST}" ]; then
         echo "Initializing test" 
         # install_AptanaStudio3
-	    # install_avr
+	# install_Apache
+	# install_avr
         # install_octave
         # install_spotify
         # install_gchrome
