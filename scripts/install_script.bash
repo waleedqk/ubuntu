@@ -75,7 +75,7 @@ APP_LIST=(
 
 OPTS=`getopt -o cnth --long config,new-install,test,help -n 'parse-options' -- "$@"`
 
-usage() { echo "Error - Usage: $0 [-c || --config] [-n || --new-install] [-t || --test] [-h || --help]" 1>&2; exit 1; }
+usage() { echo "Error - Usage: sudo bash $0 [-c || --config] [-n || --new-install] [-t || --test] [-h || --help]" 1>&2; exit 1; }
 
 
 if [ $? != 0 ] ; then echo "Failed parsing options." usage >&2 ; exit 1 ; fi
