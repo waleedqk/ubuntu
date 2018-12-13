@@ -10,6 +10,13 @@ UBUNTU_VERSION=$(lsb_release -rs)	#16.04 18.04
 
 MYHOME="/home/${SUDO_USER}"
 
+BASIC_APPS=(
+    curl
+    git
+    make  
+    xclip
+)
+
 # APP LIST
 APP_LIST=(
     arp-scan # local network scan
@@ -18,8 +25,7 @@ APP_LIST=(
     clang clang-format
     cmake
     cmus # A Console Based Audio Player for Linux
-    cron
-    curl
+    cron    
     default-jdk
     # dkms
     espeak
@@ -28,7 +34,6 @@ APP_LIST=(
     filezilla
     g++ gcc
     gimp
-    git
     gparted
     gpsprune
     gzip
@@ -37,7 +42,6 @@ APP_LIST=(
     imagemagick
     inkscape
     keepass2
-    make
     netcat
     nmap
     npm
@@ -69,7 +73,6 @@ APP_LIST=(
     virtualbox
     vlc
     wireshark
-    xclip
     youtube-dl
 )
 
@@ -110,6 +113,7 @@ bionic_install()
 {
     if [ ! -z "${NEW_INSTALL}" ]; then
         echo "Initializing a fresh install" 
+	basic_utility
         directory_make
         add_ppa
         install_app       
@@ -137,6 +141,12 @@ bionic_install()
         # install_kicad
         # install_docker
     fi
+}
+
+basic_utility()
+{
+    echo "Installing basic utilities now ..."
+    sudo apt -y install "${BASIC_APPS[@]}"
 }
 
 directory_make()
