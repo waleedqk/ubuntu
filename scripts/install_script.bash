@@ -61,7 +61,7 @@ APP_LIST=(
     syncthing
     tcpdump
     telnet
-    texlive-full texstudio
+    # texlive-full texstudio
     tree
     tmux
     ubuntu-restricted-extras
