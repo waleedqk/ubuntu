@@ -35,7 +35,7 @@ APP_LIST=(
     g++ gcc
     gimp
     gparted
-    gpsprune
+    # gpsprune
     gzip
     handbrake-gtk handbrake-cli
     htop
@@ -113,8 +113,8 @@ bionic_install()
 {
     if [ ! -z "${NEW_INSTALL}" ]; then
         echo "Initializing a fresh install" 
-	basic_utility
-	directory_make
+	    basic_utility
+	    directory_make
         add_ppa
         install_app       
         git_config
@@ -133,14 +133,14 @@ bionic_install()
     if [ ! -z "${TEST}" ]; then
         echo "Initializing test" 
         # install_AptanaStudio3
-	# install_Apache
-	# install_avr
-        # install_octave
+	    # install_Apache
+	    install_avr
+        install_octave
         # install_spotify
         # install_gchrome
         # install_minecraft
         # install_kicad
-        # install_docker
+        install_docker
     fi
 }
 
@@ -401,7 +401,7 @@ main()
             bionic_install ;;
         *)
             echo "Unsupported version of Ubuntu detected. Only bionic (18.04.*) are currently supported."
-            bionic_install
+            # bionic_install
             exit 1 ;;
     esac
 }
