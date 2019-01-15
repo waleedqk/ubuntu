@@ -65,15 +65,23 @@ APP_LIST=(
     syncthing
     tcpdump
     telnet
-    # texlive-full texstudio
+    texlive-full texstudio
     tree
     tmux
     ubuntu-restricted-extras
     vim
     virtualbox
-    vlc
     wireshark
     youtube-dl
+)
+
+# SNAP APP LIST
+SNAP_APP_LIST=(
+    foobar2000
+    pycharm-community
+    skype
+    spotify
+    vlc
 )
 
 OPTS=`getopt -o cnth --long config,new-install,test,help -n 'parse-options' -- "$@"`
@@ -116,7 +124,8 @@ bionic_install()
 	    basic_utility
 	    directory_make
         add_ppa
-        install_app       
+        install_app   
+        snap_install_app    
         git_config
         vim_config
         tmux_config
@@ -136,7 +145,6 @@ bionic_install()
 	    # install_Apache
 	    install_avr
         install_octave
-        # install_spotify
         # install_gchrome
         # install_minecraft
         # install_kicad
@@ -193,6 +201,16 @@ install_app()
     sudo apt -y install "${APP_LIST[@]}"
 }
 
+snap_install_app()
+{
+    echo "Installing snap apps now ..."
+    sudo snap install  "${SNAP_APP_LIST[@]}"
+
+    # Upgrade a Snappy package: sudo snap refresh PACKAGE NAME
+    # List all of your installed Snappy packages: snap list
+    # Remove a Snappy package: sudo snap remove PACKAGE NAME
+}
+
 git_config() {
     echo "Setting up git configuration ..."
     sudo -u ${SUDO_USER} git config --global user.name "Waleed Khan"
@@ -245,21 +263,6 @@ install_gchrome()
     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     sudo apt-get update
     sudo apt-get install google-chrome-stable -y
-}
-
-install_spotify()
-{
-    # Add the Spotify repository signing keys to be able to verify downloaded packages
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-
-    # Add the Spotify repository
-    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-    
-    # update package listing
-    sudo apt update
-
-    # Install Spotify
-    sudo apt -y install spotify-client
 }
 
 install_minecraft()
