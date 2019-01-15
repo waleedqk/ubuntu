@@ -77,11 +77,16 @@ APP_LIST=(
 
 # SNAP APP LIST
 SNAP_APP_LIST=(
+    # blender --classic
     foobar2000
+    libreoffice
+    mattermost-desktop
+    notepad-plus-plus
     pycharm-community
     skype
     spotify
     vlc
+    vscode --classic
 )
 
 OPTS=`getopt -o cnth --long config,new-install,test,help -n 'parse-options' -- "$@"`
