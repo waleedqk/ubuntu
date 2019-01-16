@@ -77,16 +77,16 @@ APP_LIST=(
 
 # SNAP APP LIST
 SNAP_APP_LIST=(
-    # blender --classic
+    # "blender --classic"
     foobar2000
     libreoffice
     mattermost-desktop
     notepad-plus-plus
-    pycharm-community
-    skype
+    "pycharm-community --classic"
+    "skype --classic"
     spotify
     vlc
-    vscode --classic
+    "vscode --classic"
 )
 
 OPTS=`getopt -o cnth --long config,new-install,test,help -n 'parse-options' -- "$@"`
@@ -137,8 +137,8 @@ bionic_install()
         wireshark_config
     fi
 
-    if [ ! -z "${CONFIG}" ]; then    
-        git_config
+    if [ ! -z "${CONFIG}" ]; then  
+	git_config
         vim_config
         tmux_config
         wireshark_config
@@ -208,8 +208,13 @@ install_app()
 
 snap_install_app()
 {
-    echo "Installing snap apps now ..."
-    sudo snap install  "${SNAP_APP_LIST[@]}"
+	echo "Installing snap apps now ..."
+
+	for i in "${SNAP_APP_LIST[@]}"
+	do
+		echo "Installing: $i"
+		sudo snap install $i
+	done
 
     # Upgrade a Snappy package: sudo snap refresh PACKAGE NAME
     # List all of your installed Snappy packages: snap list
@@ -258,8 +263,8 @@ wireshark_config()
 {
     echo "Give user privelages for wireshark"
     sudo dpkg-reconfigure wireshark-common
-    echo "a wireshark group been created in /etc/gshadow. so add user to it"
-    sudo gpasswd -a $SUDO_USER wireshark
+    # echo "a wireshark group been created in /etc/gshadow. so add user to it"
+    # sudo gpasswd -a $SUDO_USER wireshark
 }
 
 install_gchrome()
