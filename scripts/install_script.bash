@@ -86,7 +86,7 @@ SNAP_APP_LIST=(
     "skype --classic"
     spotify
     vlc
-    "vscode --classic"
+    "code --classic"
 )
 
 OPTS=`getopt -o cnth --long config,new-install,test,help -n 'parse-options' -- "$@"`
