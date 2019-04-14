@@ -42,6 +42,7 @@ APP_LIST=(
     imagemagick
     inkscape
     keepass2
+    net-tools
     netcat
     nmap
     npm
