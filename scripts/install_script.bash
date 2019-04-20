@@ -74,6 +74,7 @@ APP_LIST=(
     virtualbox
     wireshark
     youtube-dl
+    zim
 )
 
 # SNAP APP LIST
@@ -187,6 +188,9 @@ add_ppa()
 
     # shutter
     # sudo add-apt-repository ppa:shutter/ppa
+
+    # zim
+    sudo add-apt-repository ppa:jaap.karssenberg/zim
 
     # Syncthing
     curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
