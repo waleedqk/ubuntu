@@ -26,6 +26,7 @@ APP_LIST=(
     cmake
     cmus # A Console Based Audio Player for Linux
     cron    
+    dconf-editor # keyboard shortcut updates
     default-jdk
     # dkms
     espeak
