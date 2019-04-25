@@ -81,6 +81,7 @@ APP_LIST=(
 # SNAP APP LIST
 SNAP_APP_LIST=(
     # "blender --classic"
+    docker
     foobar2000
     libreoffice
     mattermost-desktop
