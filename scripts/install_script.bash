@@ -82,12 +82,14 @@ APP_LIST=(
 SNAP_APP_LIST=(
     # "blender --classic"
     docker
+    electron-mail  # desktop email app
     electronplayer
     foobar2000
     libreoffice
     mattermost-desktop
     notepad-plus-plus
     "pycharm-community --classic"
+    recollectr       # sticky note taking app
     "skype --classic"
     spotify
     vlc
