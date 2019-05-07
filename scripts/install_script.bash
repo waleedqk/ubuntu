@@ -54,7 +54,7 @@ APP_LIST=(
     pavucontrol
     pdfshuffler
     pinta
-    postgresql-client-common
+    postgresql-client-common postgresql-client-10
     python-pip
     python3-pip
     screen
