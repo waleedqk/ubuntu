@@ -57,6 +57,7 @@ APP_LIST=(
     postgresql-client-common postgresql-client-10
     python-pip
     python3-pip
+    r-base
     screen
     # shutter
     simplescreenrecorder simplescreenrecorder-lib
