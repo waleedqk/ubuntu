@@ -25,7 +25,7 @@ PIP3_LIST=(
 	plotly psutil
 	plotnine          # https://github.com/has2k1/plotnine
 	preprocessing
-	psycopg2
+	# psycopg2
 	pydotplus
     pyshark
 	quandl
@@ -41,6 +41,7 @@ PIP3_LIST=(
 
 APP3_LIST=(
 	python3-automaton
+	python3-dev
 	python3-nmap
 	python3-pygraphviz
 	python3-requests
@@ -50,7 +51,7 @@ APP3_LIST=(
 pip_update()
 {
 	echo "update..."
-	apt-get update
+	apt update
 	clear
 	echo "update pip..."
 	sudo -H pip3 install --upgrade pip
@@ -70,7 +71,7 @@ main()
 
 
 	echo "Installing apps now ..."
-	sudo apt-get -y install "${APP3_LIST[@]}"
+	sudo apt -y install "${APP3_LIST[@]}"
 
 	echo "Installing pip3 apps"	
 	sudo -H pip3 install "${PIP3_LIST[@]}"

@@ -142,7 +142,7 @@ bionic_install()
         git_config
         vim_config
         tmux_config
-        wireshark_config
+        # wireshark_config
     fi
 
     if [ ! -z "${CONFIG}" ]; then  
