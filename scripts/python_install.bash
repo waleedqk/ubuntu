@@ -30,7 +30,7 @@ PIP3_LIST=(
     pyshark
 	quandl
 	redis
-	scipy
+	scipy==1.2
 	scikit-learn
 	seaborn
 	sympy
