@@ -37,6 +37,7 @@ PIP3_LIST=(
 	tensorflow
 	unicodecsv
 	virtualenv
+	xlrd   # sudo python3.6 -m pip install xlrd
 )
 
 APP3_LIST=(
