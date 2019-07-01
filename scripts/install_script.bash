@@ -87,6 +87,7 @@ SNAP_APP_LIST=(
     electron-mail  # desktop email app
     electronplayer
     foobar2000
+    "intellij-idea-community --classic "
     libreoffice
     mattermost-desktop
     notepad-plus-plus

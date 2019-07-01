@@ -13,6 +13,8 @@ PIP3_LIST=(
 	beautifulsoup4
 	color
 	dplython
+	dtw
+	fastdtw
 	GitPython
 	gtabview
 	html5lib
